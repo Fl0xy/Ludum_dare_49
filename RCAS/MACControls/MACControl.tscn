@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://RCAS/MACControls/MACControl.gd" type="Script" id=1]
+
+[node name="maccontrol" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="plus" type="Button" parent="."]
+margin_left = 16.0
+margin_right = 36.0
+margin_bottom = 20.0
+text = "+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="minus" type="Button" parent="."]
+margin_left = 16.0
+margin_top = 40.0
+margin_right = 36.0
+margin_bottom = 60.0
+text = "-"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="label" type="Label" parent="."]
+margin_left = 16.0
+margin_top = 24.0
+margin_right = 56.0
+margin_bottom = 38.0
+text = "00"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="debug" type="Label" parent="."]
+margin_left = 16.0
+margin_top = 64.0
+margin_right = 56.0
+margin_bottom = 78.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
