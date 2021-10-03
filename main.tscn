@@ -14,26 +14,36 @@ __meta__ = {
 }
 
 [node name="warpCore" parent="." instance=ExtResource( 1 )]
-position = Vector2( 392, 96 )
+position = Vector2( 56, 48 )
 
 [node name="matterControl" parent="." instance=ExtResource( 3 )]
-position = Vector2( 792, 488 )
+position = Vector2( 640, 472 )
 
 [node name="antiMatterControl" parent="." instance=ExtResource( 3 )]
-position = Vector2( 864, 488 )
+position = Vector2( 712, 472 )
 
 [node name="device" parent="." instance=ExtResource( 4 )]
-position = Vector2( 904, 56 )
+position = Vector2( 328, 56 )
+scale = Vector2( 2, 2 )
+eusage = 0.2
+musage = -0.05
+ebufSize = 100.0
+mbufSize = -100.0
+timeToDead = 100.0
 
 [node name="powerHBar" parent="." instance=ExtResource( 5 )]
-position = Vector2( 744, 328 )
+position = Vector2( 656, 384 )
 scale = Vector2( 2, 2 )
-
-[node name="TmpHBar" parent="." instance=ExtResource( 5 )]
-position = Vector2( 744, 360 )
-scale = Vector2( 2, 2 )
-unit = "T"
 
 [node name="plasmaMix" parent="." instance=ExtResource( 6 )]
-position = Vector2( 608, 264 )
+position = Vector2( 520, 320 )
 scale = Vector2( 2, 2 )
+
+[node name="device2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 656, 56 )
+scale = Vector2( 2, 2 )
+eusage = 0.2
+musage = 0.05
+ebufSize = 100.0
+mbufSize = 100.0
+timeToDead = 100.0

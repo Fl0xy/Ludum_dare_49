@@ -3,9 +3,9 @@ extends Node2D
 export(bool) var on: bool = true
 
 ## device
-var device
-var connected: bool setget changeConncted
-signal connctedChanged(connected)
+var devices = []
+var antiMatterDevices = []
+var matterDevices = []
 
 ## out
 var outputPlasma: float setget changeOutputPlasma
@@ -20,13 +20,10 @@ var inAntiMatterFlow: float setget changeInAntiMatterFlow
 ## stats
 var health: float setget changeHealth
 signal healthChanged(health)
-var heat: float setget changeHeat
-signal heatChanged(heat)
-var pressure: float setget changePressure
+var matStore: float setget changeMatStore
 
 func _ready():
 	randomize()
-	self.connected = false
 	self.health = 1
 	self.inMatterFlow = 0
 	self.inAntiMatterFlow = 0
@@ -35,43 +32,62 @@ func _ready():
 func  _process(delta):
 	if(on):
 		## output
-		self.outputPower = (self.inMatterFlow * self.inAntiMatterFlow) * (1 + (randi() % 100)*0.001)
+		if (self.inMatterFlow < self.inAntiMatterFlow):
+			self.outputPower = self.inMatterFlow
+		else:
+			self.outputPower = self.inAntiMatterFlow
 		self.outputPlasma = self.inMatterFlow - self.inAntiMatterFlow
 		
-		## heat
-		self.heat += (self.outputPower * 0.1) * delta
-		## cooling
-		if (heat > 0):
-			var cooling = (self.heat / 2) + 0.001
-			if (cooling > 0.1):
-				cooling = 0.1
-			self.heat -= cooling * delta
+		# power devices
+		for device in self.devices:
+			device.inEnergie = self.outputPower
 		
-		## pressure
-		if (!self.connected):
-			self.pressure += 0.005 * delta
-		elif (self.pressure > 0):
-			self.pressure -= 0.01 * delta
-		else:
-			self.pressure = 0
+		# mat for devices
+		if (self.outputPlasma < 0): # antimatter
+			if (self.antiMatterDevices.empty() || self.matStore > 0):
+				self.matStore += self.outputPlasma
+			else:
+				for device in self.antiMatterDevices:
+					if (self.matStore < 0):
+						self.matStore -= self.outputPlasma
+						device.changeInMatter(self.outputPlasma * 2)
+					else:
+						device.changeInMatter(self.outputPlasma)
+			for device in self.matterDevices:
+				device.changeInMatter(0)
 			
-		## health
-		if (self.heat > 1):
-			self.health -= (0.01 * heat) * delta
+		elif (self.outputPlasma > 0): # matter
+			if (self.matterDevices.empty() || self.matStore < 0):
+				self.matStore += self.outputPlasma
+			else:
+				for device in self.matterDevices:
+					if (self.matStore > 0):
+						self.matStore -= self.outputPlasma
+						device.changeInMatter(self.outputPlasma * 2)
+					else:
+						device.changeInMatter(self.outputPlasma)
+			for device in self.antiMatterDevices:
+				device.changeInMatter(0)
+		else: # plasma 0
+			for device in self.matterDevices:
+				device.changeInMatter(0)
+			for device in self.antiMatterDevices:
+				device.changeInMatter(0)
+		
 
-
-func connectDevice(device):
-	if (self.connected):
-		device.disconnect("deviceDisconnect", self, "disconnectDevice")
-		device.deviceDisconnect()
-	self.device = device
-	device.connect("deviceDisconnect", self, "disconnectDevice")
-	self.connected = true
+func connectDevice(device: Device):
+	if (self.devices.has(device)):
+		return # is connected
+	devices.append(device)
+	if (device.mbufSize < 0): # antimatterDevice
+		self.antiMatterDevices.append(device)
+	elif (device.mbufSize > 0): # matterDevice
+		self.matterDevices.append(device)
 	
-func disconnectDevice():
-	device.disconnect("deviceDisconnect", self, "disconnectDevice")
-	device = null
-	self.connected = false
+func disconnectDevice(device: Device):
+	self.devices.erase(device)
+	self.antiMatterDevices.erase(device)
+	self.matterDevices.erase(device)
 
 func changeHealth(newHealth: float):
 	health = newHealth
@@ -80,31 +96,22 @@ func changeHealth(newHealth: float):
 
 func changeOutputPlasma(newOutputPlasma: float):
 	outputPlasma = newOutputPlasma
+	$outMat.text = str(outputPlasma)
 	emit_signal("outputPlasmaChanged", outputPlasma)
 	
 func changeOutputPower(newOutputPower: float):
 	outputPower = newOutputPower
+	$outPow.text = str(outputPower)
 	emit_signal("outputPowerChanged", outputPower)
 
 func changeInMatterFlow(newInMatterFlow: float):
 	inMatterFlow = newInMatterFlow
+	$inMat.text = str(inMatterFlow)
 	
 func changeInAntiMatterFlow(newInAntiMatterFlow: float):
 	inAntiMatterFlow = newInAntiMatterFlow
-
-func changeHeat(newHeat: float):
-	heat = newHeat
-	emit_signal("heatChanged", heat)
-	$heat.text = str(heat)
+	$inAmat.text = str(inAntiMatterFlow)
 	
-func changePressure(newPressure: float):
-	pressure = newPressure
-	$pressure.text = str(pressure)
-
-func changeConncted(newConnected: bool):
-	connected = newConnected
-	if connected:
-		$connected.text = "true"
-	else:
-		$connected.text = "false"
-	emit_signal("connctedChanged", connected)
+func changeMatStore(newMatStore: float):
+	matStore = newMatStore
+	$storeMat.text = str(matStore)
