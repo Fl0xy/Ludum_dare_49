@@ -12,9 +12,9 @@ scale = Vector2( 2, 2 )
 texture = ExtResource( 1 )
 
 [node name="Label" type="Label" parent="."]
-margin_left = 24.0
+margin_left = 8.0
 margin_top = 128.0
-margin_right = 74.0
+margin_right = 58.0
 margin_bottom = 142.0
 text = "Health: "
 __meta__ = {
@@ -22,67 +22,105 @@ __meta__ = {
 }
 
 [node name="health" type="Label" parent="."]
-margin_left = 88.0
+margin_left = 72.0
 margin_top = 128.0
-margin_right = 138.0
+margin_right = 122.0
 margin_bottom = 142.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="heat" type="Label" parent="."]
-margin_left = 88.0
-margin_top = 144.0
-margin_right = 138.0
-margin_bottom = 158.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="pressure" type="Label" parent="."]
-margin_left = 88.0
-margin_top = 160.0
-margin_right = 138.0
-margin_bottom = 174.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="connected" type="Label" parent="."]
-margin_left = 88.0
-margin_top = 176.0
-margin_right = 138.0
-margin_bottom = 190.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Label2" type="Label" parent="."]
-margin_left = 24.0
+margin_left = 8.0
 margin_top = 144.0
-margin_right = 64.0
+margin_right = 58.0
 margin_bottom = 158.0
-text = "Heat:"
+text = "inMat:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="inMat" type="Label" parent="."]
+margin_left = 72.0
+margin_top = 144.0
+margin_right = 122.0
+margin_bottom = 158.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label3" type="Label" parent="."]
-margin_left = 24.0
+margin_left = 8.0
 margin_top = 160.0
-margin_right = 80.0
+margin_right = 58.0
 margin_bottom = 174.0
-text = "Pressure:"
+text = "inAmat:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="inAmat" type="Label" parent="."]
+margin_left = 72.0
+margin_top = 160.0
+margin_right = 122.0
+margin_bottom = 174.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label4" type="Label" parent="."]
-margin_left = 24.0
+margin_left = 8.0
 margin_top = 176.0
-margin_right = 84.0
+margin_right = 59.0
 margin_bottom = 190.0
-text = "connect:"
+text = "outPow:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="outPow" type="Label" parent="."]
+margin_left = 72.0
+margin_top = 176.0
+margin_right = 122.0
+margin_bottom = 190.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label5" type="Label" parent="."]
+margin_left = 8.0
+margin_top = 192.0
+margin_right = 59.0
+margin_bottom = 206.0
+text = "outMat:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="outMat" type="Label" parent="."]
+margin_left = 72.0
+margin_top = 192.0
+margin_right = 122.0
+margin_bottom = 206.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label6" type="Label" parent="."]
+margin_left = 8.0
+margin_top = 208.0
+margin_right = 69.0
+margin_bottom = 222.0
+text = "storeMat:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="storeMat" type="Label" parent="."]
+margin_left = 72.0
+margin_top = 208.0
+margin_right = 122.0
+margin_bottom = 222.0
 __meta__ = {
 "_edit_use_anchors_": false
 }

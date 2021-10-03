@@ -1,14 +1,13 @@
 extends Node2D
+class_name Device
 
 export(float) var eusage setget changeEUsage
 export(float) var musage setget changeMUsage
 export(float) var inEnergie setget changeInEnergie
-export(float) var inMatter
+export(float) var inMatter setget changeInMatter
 export(float) var ebufSize
 export(float) var mbufSize
 export(float) var timeToDead
-export(float) var deadTime
-var dead: bool 
 var timer: float setget changeTimer
 
 var connected: bool setget changeConnected
@@ -17,11 +16,11 @@ var mbuf: float setget changeMbuf
 
 
 signal deviceConnect(device)
-signal deviceDisconnect()
+signal deviceDisconnect(device)
+signal feedbackloop()
 
 func _ready():
 	$Button.connect("pressed", self, "toggle")
-	dead = false
 	timer = timeToDead
 	
 	self.connected = false
@@ -31,49 +30,44 @@ func _ready():
 		
 func _physics_process(delta):
 	
-	if (!dead):
-		var damage: bool = false
-		# add energie to buffer
+	var damage: bool = false
+	
+	if (self.ebuf < self.ebufSize * 1.01):
 		self.ebuf += self.inEnergie
-		if (self.ebuf > self.ebufSize):
-			self.ebuf = self.ebufSize
-		
-		# take energie from buffer
+	
+	# take energie from buffer
+	if (self.ebuf > 0):
 		self.ebuf -= self.eusage
-		if (self.ebuf < 0):
-			self.ebuf = 0
-			
-		## check energie buffer full or empty
-		if (self.ebuf == self.ebufSize || self.ebuf == 0):
-			damage = true
 		
-		# matter antimatter suff
-		if (mbufSize != 0):
+	## check energie buffer full or empty
+	if (self.ebuf >= self.ebufSize || self.ebuf <= 0):
+		damage = true
+	
+	if (mbufSize > 0): #matter mode
+		if (self.mbuf < self.mbufSize * 1.01):
 			self.mbuf += self.inMatter
-			if ((mbufSize < 0 && self.mbuf < self.mbufSize) || (mbufSize > 0 && self.mbuf > self.mbufSize)):
-				self.mbuf = mbufSize
-			
+		if (self.mbuf > 0):
 			self.mbuf -= self.musage
-			if ((mbufSize < 0 && mbuf > 0) || (mbufSize > 0 && mbuf < 0)):
-				self.mbuf = 0
-				
-			if (self.mbuf == self.mbufSize || self.mbuf == 0):
-				damage = true
-		
-		# Damage
-		if (damage):
-			self.timer -= delta
-		if (self.timer < 0):
-			# make dead
-			deviceDisconnect()
-			self.timer = deadTime
-			self.dead = true
-	else:
-		# dead
+		if (self.mbuf >= self.mbufSize || self.mbuf <= 0):
+			damage = true
+	elif (mbufSize < 0): #antimatter mode
+		if (self.mbuf > self.mbufSize * 1.01):
+			self.mbuf += self.inMatter
+		if (self.mbuf < 0):
+			self.mbuf -= self.musage
+		if (self.mbuf <= self.mbufSize || self.mbuf >= 0):
+			damage = true
+	
+	# Damage
+	if (damage):
 		self.timer -= delta
-		if(self.timer < 0):
-			self.timer = timeToDead
-			self.dead = false
+	else:
+		if (timer < timeToDead):
+			self.timer += delta / 2
+	if (self.timer < 0):
+		emit_signal("feedbackloop")
+		self.timer = timeToDead
+		
 
 
 func deviceDisconnect():
@@ -89,35 +83,32 @@ func changeConnected(newConnected: bool):
 		emit_signal("deviceConnect", self)
 	else:
 		$connected.text = "false"
-		emit_signal("deviceDisconnect")
+		emit_signal("deviceDisconnect", self)
 
-func changeEbuf(newEbuf):
+func changeEbuf(newEbuf: float):
 	ebuf = newEbuf
 	$ebuf.text = str(ebuf) + "/" + str(ebufSize)
 	
-func changeMbuf(newMbuf):
+func changeMbuf(newMbuf: float):
 	mbuf = newMbuf
-	$ebuf.text = str(mbuf) + "/" + str(mbufSize)
+	$mbuf.text = str(mbuf) + "/" + str(mbufSize)
 	
-func changeEUsage(newEUsage):
+func changeEUsage(newEUsage: float):
 	eusage = newEUsage
 	$eusage.text = str(eusage)
 	
-func changeMUsage(newMUsage):
+func changeMUsage(newMUsage: float):
 	musage = newMUsage
 	$musage.text = str(musage)
 	
-func changeInEnergie(newInEnergie):
+func changeInEnergie(newInEnergie: float):
 	inEnergie = newInEnergie
 	$inEnergie.text = str(inEnergie)
 	
-func changeInMatter(newInMatter):
+func changeInMatter(newInMatter: float):
 	inMatter = newInMatter
 	$inMatter.text = str(inMatter)
 	
 func changeTimer(newTimer):
 	timer = newTimer
-	if (dead):
-		$dead.text = "true: " + str(timer)
-	else:
-		$dead.text = "false: " + str(timer)
+	$timer.text = str(timer)
