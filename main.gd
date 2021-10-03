@@ -9,3 +9,4 @@ func _ready():
 	
 	$warpCore.connect("outputPowerChanged", $powerHBar, "changeValue")
 	$warpCore.connect("heatChanged", $TmpHBar, "changeValue")
+	$warpCore.connect("outputPlasmaChanged", $plasmaMix, "changeValue")

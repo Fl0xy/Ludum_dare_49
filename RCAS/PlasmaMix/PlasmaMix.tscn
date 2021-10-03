@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://white_pixel.png.png" type="Texture" id=1]
+[ext_resource path="res://Fonts/Beef'd.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://RCAS/PlasmaMix/PlasmaMix.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 5
+extra_spacing_char = -1
+font_data = ExtResource( 2 )
+
+[node name="plasmaMix" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2( 100, 0 )
+
+[node name="Sprite" type="Sprite" parent="Node2D"]
+scale = Vector2( 100, 10 )
+texture = ExtResource( 1 )
+centered = false
+
+[node name="Label" type="Label" parent="."]
+margin_top = -8.0
+margin_right = 61.0
+custom_fonts/font = SubResource( 1 )
+text = "AnitMatter"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 160.0
+margin_top = -8.0
+margin_right = 200.0
+custom_fonts/font = SubResource( 1 )
+text = "Matter"
+__meta__ = {
+"_edit_use_anchors_": false
+}
