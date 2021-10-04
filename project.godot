@@ -24,6 +24,10 @@ config/name="Ludum_dare_49"
 run/main_scene="res://main.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Style="*res://Style.gd"
+
 [display]
 
 window/size/width=400

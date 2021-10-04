@@ -1,6 +1,8 @@
 extends Node2D
 class_name Device
 
+const BAR_LENGTH: int  = 23
+
 export(float) var eusage setget changeEUsage
 export(float) var musage setget changeMUsage
 export(float) var inEnergie setget changeInEnergie
@@ -8,9 +10,9 @@ export(float) var inMatter setget changeInMatter
 export(float) var ebufSize
 export(float) var mbufSize
 export(float) var timeToDead
-var timer: float setget changeTimer
+export(bool) var connected: bool setget changeConnected
 
-var connected: bool setget changeConnected
+var timer: float setget changeTimer
 var ebuf: float setget changeEbuf
 var mbuf: float setget changeMbuf
 
@@ -23,10 +25,10 @@ func _ready():
 	$Button.connect("pressed", self, "toggle")
 	timer = timeToDead
 	
-	self.connected = false
 	self.ebuf = self.ebufSize / 2
 	if (self.mbufSize != 0):
 		self.mbuf = self.mbufSize / 2
+	
 		
 func _physics_process(delta):
 	
@@ -81,16 +83,24 @@ func changeConnected(newConnected: bool):
 	if (connected):
 		$connected.text = "true"
 		emit_signal("deviceConnect", self)
+		$ui_device_name_tag.modulate = Style.ON_COLOR
+		$ui_device_energy_bar.modulate = Style.ON_COLOR
+		$ui_device_excess_bar.modulate = Style.ON_COLOR
 	else:
 		$connected.text = "false"
 		emit_signal("deviceDisconnect", self)
+		$ui_device_name_tag.modulate = Style.OFF_COLOR
+		$ui_device_energy_bar.modulate = Style.OFF_COLOR
+		$ui_device_excess_bar.modulate = Style.OFF_COLOR
 
 func changeEbuf(newEbuf: float):
 	ebuf = newEbuf
+	$enrBar.transform = Vector2((ebuf/self.ebufSize)*BAR_LENGTH, 3)
 	$ebuf.text = str(ebuf) + "/" + str(ebufSize)
 	
 func changeMbuf(newMbuf: float):
 	mbuf = newMbuf
+	$matBar.transform = Vector2(abs((ebuf/self.ebufSize)*BAR_LENGTH), 3)
 	$mbuf.text = str(mbuf) + "/" + str(mbufSize)
 	
 func changeEUsage(newEUsage: float):
@@ -112,3 +122,12 @@ func changeInMatter(newInMatter: float):
 func changeTimer(newTimer):
 	timer = newTimer
 	$timer.text = str(timer)
+	
+func changeMBufSize(newMBufSize):
+	mbufSize = newMBufSize
+	if (mbufSize < 0): #antimatter
+		$ui_symbole_matter.visible = false
+		$ui_symbole_antim.visible = true
+		$matBar.modulate = Style.ANTIMATTER_COLOR
+	elif(mbufSize > 0): #matter
+		

@@ -1,41 +1,53 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Components/Device/Device.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/Beef'd.ttf" type="DynamicFontData" id=2]
-
-[sub_resource type="DynamicFont" id=2]
-size = 10
-font_data = ExtResource( 2 )
+[ext_resource path="res://white_pixel.png.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/ui_device_border.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/ui_symbole_anti-m.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/ui_device_name_tag.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/ui_device_excess_bar.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/ui_device_energy_bar.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/ui_symbole_energy.png" type="Texture" id=9]
+[ext_resource path="res://Fonts/Beef'd custom.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://Sprites/ui_symbole_matter.png" type="Texture" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 size = 5
 extra_spacing_char = -1
 font_data = ExtResource( 2 )
 
+[sub_resource type="DynamicFont" id=2]
+size = 5
+extra_spacing_char = -1
+font_data = ExtResource( 10 )
+
 [node name="device" type="Node2D"]
 script = ExtResource( 1 )
-
-[node name="name" type="Label" parent="."]
-margin_top = -16.0
-margin_right = 84.0
-custom_fonts/font = SubResource( 2 )
-text = "Device"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+eusage = null
+musage = null
+inEnergie = null
+inMatter = null
+ebufSize = null
+mbufSize = null
+timeToDead = null
+connected = null
 
 [node name="Button" type="Button" parent="."]
-margin_right = 82.0
-margin_bottom = 20.0
+margin_left = 72.0
+margin_top = 16.0
+margin_right = 154.0
+margin_bottom = 36.0
 text = "Toggle"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label5" type="Label" parent="."]
-margin_top = 24.0
-margin_right = 45.0
-margin_bottom = 32.0
+margin_left = 72.0
+margin_top = 40.0
+margin_right = 117.0
+margin_bottom = 48.0
 custom_fonts/font = SubResource( 1 )
 text = "connect:"
 __meta__ = {
@@ -43,19 +55,20 @@ __meta__ = {
 }
 
 [node name="connected" type="Label" parent="."]
-margin_left = 48.0
-margin_top = 24.0
-margin_right = 93.0
-margin_bottom = 32.0
+margin_left = 120.0
+margin_top = 40.0
+margin_right = 165.0
+margin_bottom = 48.0
 custom_fonts/font = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label6" type="Label" parent="."]
-margin_top = 32.0
-margin_right = 45.0
-margin_bottom = 40.0
+margin_left = 72.0
+margin_top = 48.0
+margin_right = 117.0
+margin_bottom = 56.0
 custom_fonts/font = SubResource( 1 )
 text = "in-E:"
 __meta__ = {
@@ -63,19 +76,20 @@ __meta__ = {
 }
 
 [node name="inEnergie" type="Label" parent="."]
-margin_left = 48.0
-margin_top = 32.0
-margin_right = 93.0
-margin_bottom = 40.0
+margin_left = 120.0
+margin_top = 48.0
+margin_right = 165.0
+margin_bottom = 56.0
 custom_fonts/font = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label8" type="Label" parent="."]
-margin_top = 40.0
-margin_right = 45.0
-margin_bottom = 48.0
+margin_left = 72.0
+margin_top = 56.0
+margin_right = 117.0
+margin_bottom = 64.0
 custom_fonts/font = SubResource( 1 )
 text = "in-M"
 __meta__ = {
@@ -83,19 +97,20 @@ __meta__ = {
 }
 
 [node name="inMatter" type="Label" parent="."]
-margin_left = 48.0
-margin_top = 40.0
-margin_right = 93.0
-margin_bottom = 48.0
+margin_left = 120.0
+margin_top = 56.0
+margin_right = 165.0
+margin_bottom = 64.0
 custom_fonts/font = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="."]
-margin_top = 48.0
-margin_right = 40.0
-margin_bottom = 56.0
+margin_left = 72.0
+margin_top = 64.0
+margin_right = 112.0
+margin_bottom = 72.0
 custom_fonts/font = SubResource( 1 )
 text = "E-Buf:"
 __meta__ = {
@@ -103,19 +118,20 @@ __meta__ = {
 }
 
 [node name="ebuf" type="Label" parent="."]
-margin_left = 48.0
-margin_top = 48.0
-margin_right = 93.0
-margin_bottom = 56.0
+margin_left = 120.0
+margin_top = 64.0
+margin_right = 165.0
+margin_bottom = 72.0
 custom_fonts/font = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label2" type="Label" parent="."]
-margin_top = 56.0
-margin_right = 40.0
-margin_bottom = 64.0
+margin_left = 72.0
+margin_top = 72.0
+margin_right = 112.0
+margin_bottom = 80.0
 custom_fonts/font = SubResource( 1 )
 text = "M-Buf:"
 __meta__ = {
@@ -123,19 +139,20 @@ __meta__ = {
 }
 
 [node name="mbuf" type="Label" parent="."]
-margin_left = 48.0
-margin_top = 56.0
-margin_right = 93.0
-margin_bottom = 64.0
+margin_left = 120.0
+margin_top = 72.0
+margin_right = 165.0
+margin_bottom = 80.0
 custom_fonts/font = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label4" type="Label" parent="."]
-margin_top = 64.0
-margin_right = 40.0
-margin_bottom = 72.0
+margin_left = 72.0
+margin_top = 80.0
+margin_right = 117.0
+margin_bottom = 88.0
 custom_fonts/font = SubResource( 1 )
 text = "E-usage:"
 __meta__ = {
@@ -143,19 +160,20 @@ __meta__ = {
 }
 
 [node name="eusage" type="Label" parent="."]
-margin_left = 48.0
-margin_top = 64.0
-margin_right = 93.0
-margin_bottom = 72.0
+margin_left = 120.0
+margin_top = 80.0
+margin_right = 165.0
+margin_bottom = 88.0
 custom_fonts/font = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label9" type="Label" parent="."]
-margin_top = 72.0
-margin_right = 40.0
-margin_bottom = 80.0
+margin_left = 72.0
+margin_top = 88.0
+margin_right = 117.0
+margin_bottom = 96.0
 custom_fonts/font = SubResource( 1 )
 text = "m-usage:"
 __meta__ = {
@@ -163,19 +181,20 @@ __meta__ = {
 }
 
 [node name="musage" type="Label" parent="."]
-margin_left = 48.0
-margin_top = 72.0
-margin_right = 93.0
-margin_bottom = 80.0
+margin_left = 120.0
+margin_top = 88.0
+margin_right = 165.0
+margin_bottom = 96.0
 custom_fonts/font = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label7" type="Label" parent="."]
-margin_top = 80.0
-margin_right = 40.0
-margin_bottom = 88.0
+margin_left = 72.0
+margin_top = 96.0
+margin_right = 112.0
+margin_bottom = 104.0
 custom_fonts/font = SubResource( 1 )
 text = "timer:"
 __meta__ = {
@@ -183,11 +202,69 @@ __meta__ = {
 }
 
 [node name="timer" type="Label" parent="."]
-margin_left = 48.0
-margin_top = 80.0
-margin_right = 93.0
-margin_bottom = 88.0
+margin_left = 120.0
+margin_top = 96.0
+margin_right = 165.0
+margin_bottom = 104.0
 custom_fonts/font = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ui_device_border" type="Sprite" parent="."]
+texture = ExtResource( 4 )
+centered = false
+
+[node name="ui_device_energy_bar" type="Sprite" parent="."]
+texture = ExtResource( 8 )
+centered = false
+
+[node name="ui_device_excess_bar" type="Sprite" parent="."]
+texture = ExtResource( 7 )
+centered = false
+
+[node name="ui_device_name_tag" type="Sprite" parent="."]
+texture = ExtResource( 6 )
+centered = false
+
+[node name="ui_symbole_energy" type="Sprite" parent="."]
+position = Vector2( 29, 9 )
+texture = ExtResource( 9 )
+centered = false
+
+[node name="ui_symbole_matter" type="Sprite" parent="."]
+position = Vector2( 29, 3 )
+texture = ExtResource( 11 )
+centered = false
+
+[node name="ui_symbole_antim" type="Sprite" parent="."]
+visible = false
+position = Vector2( -155, -21 )
+texture = ExtResource( 5 )
+centered = false
+
+[node name="name" type="Label" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 6.0
+margin_top = 19.0
+margin_right = 31.0
+margin_bottom = 27.0
+custom_fonts/font = SubResource( 2 )
+text = "warp"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="matBar" type="Sprite" parent="."]
+modulate = Color( 0.87451, 0.443137, 0.14902, 1 )
+position = Vector2( 5, 4 )
+scale = Vector2( 22, 3 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="enrBar" type="Sprite" parent="."]
+modulate = Color( 0.356863, 0.431373, 0.882353, 1 )
+position = Vector2( 5, 10 )
+scale = Vector2( 22, 3 )
+texture = ExtResource( 3 )
+centered = false

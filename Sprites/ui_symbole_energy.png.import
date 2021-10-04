@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ui_device_name_tag.png-7bb191ee7722fef6843586a4dcc3d812.stex"
+path="res://.import/ui_symbole_energy.png-9bb8d3989648004a33761fa63b9c3d6a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/ui_device_name_tag.png"
-dest_files=[ "res://.import/ui_device_name_tag.png-7bb191ee7722fef6843586a4dcc3d812.stex" ]
+source_file="res://Sprites/ui_symbole_energy.png"
+dest_files=[ "res://.import/ui_symbole_energy.png-9bb8d3989648004a33761fa63b9c3d6a.stex" ]
 
 [params]
 
