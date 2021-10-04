@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Sprites/ui_mam-pow-bar_border.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/ui_mam-pow-bar_mask.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/ui_mam-pow-tag_border.png" type="Texture" id=3]
+[ext_resource path="res://Fonts/Beef'd custom.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Sprites/ui_symbole_energy.png" type="Texture" id=5]
+[ext_resource path="res://white_pixel.png.png" type="Texture" id=6]
+[ext_resource path="res://RCAS/POW/POWChart.gd" type="Script" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 5
+extra_spacing_char = -1
+font_data = ExtResource( 4 )
+
+[node name="powChart" type="Node2D"]
+script = ExtResource( 7 )
+inPower = 11.0
+
+[node name="bar" type="Sprite" parent="."]
+modulate = Color( 0.356863, 0.431373, 0.882353, 1 )
+position = Vector2( 7, 58 )
+scale = Vector2( 11, -46 )
+texture = ExtResource( 6 )
+centered = false
+
+[node name="ui_mam-pow-bar_border" type="Sprite" parent="."]
+position = Vector2( 4, 9 )
+texture = ExtResource( 1 )
+centered = false
+
+[node name="ui_mam-pow-bar_mask" type="Sprite" parent="."]
+position = Vector2( 4, 9 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="ui_mam-pow-tag_border" type="Sprite" parent="."]
+modulate = Color( 0.133333, 0.12549, 0.203922, 1 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Label" type="Label" parent="."]
+modulate = Color( 0.356863, 0.431373, 0.882353, 1 )
+margin_left = 3.0
+margin_right = 24.0
+margin_bottom = 8.0
+custom_fonts/font = SubResource( 1 )
+text = "POW"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui_symbole_energy" type="Sprite" parent="."]
+position = Vector2( -1, 15 )
+texture = ExtResource( 5 )
+centered = false

@@ -224,7 +224,7 @@ margin_top = 96.0
 margin_right = 165.0
 margin_bottom = 104.0
 custom_fonts/font = SubResource( 1 )
-text = "57.883331"
+text = "11.233329"
 __meta__ = {
 "_edit_use_anchors_": false
 }
