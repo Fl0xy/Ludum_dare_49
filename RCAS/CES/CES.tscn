@@ -1,0 +1,231 @@
+[gd_scene load_steps=24 format=2]
+
+[ext_resource path="res://Sprites/ces_eject-button_big_arrow.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/ces_eject-button_small-arrow_0.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/ces_eject-button_small-arrow_2.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/ces_eject-button_border.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/ces_eject-button_small-arrow_1.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/ces_monitor.png" type="Texture" id=6]
+[ext_resource path="res://RCAS/CES/SequenceButton.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Sprites/blogpost_gamescreen_v1.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/ces_ui_seg_2_danger.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/ces_ui_seg_0.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/ces_ui_seg_4_mid.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/ces_ui_seg_3.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/ces_ui_head_long.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/ces_ui_head_short.png" type="Texture" id=14]
+[ext_resource path="res://Sprites/ces_ui_seg_1.png" type="Texture" id=15]
+[ext_resource path="res://Sprites/ces_toggle-button_inner.png" type="Texture" id=16]
+[ext_resource path="res://Sprites/ces_toggle-button_border.png" type="Texture" id=17]
+[ext_resource path="res://RCAS/CES/CES.gd" type="Script" id=18]
+[ext_resource path="res://RCAS/AreaClicked.gd" type="Script" id=19]
+[ext_resource path="res://RCAS/CES/EjectionButton.gd" type="Script" id=20]
+[ext_resource path="res://RCAS/CES/CESButton.gd" type="Script" id=21]
+
+[sub_resource type="Animation" id=1]
+resource_name = "move_down"
+tracks/0/type = "value"
+tracks/0/path = NodePath("ces_monitor:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 0.153893, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 94 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "move_up"
+tracks/0/type = "value"
+tracks/0/path = NodePath("ces_monitor:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 0.210224, 0.0824694 ),
+"update": 0,
+"values": [ Vector2( 0, 94 ), Vector2( 0, 0 ) ]
+}
+
+[node name="CES" type="Node2D"]
+position = Vector2( 0, 105 )
+script = ExtResource( 18 )
+TimeUntilSequenceResetsAfterCompletingTheSequence = 5.0
+
+[node name="ces_monitor" type="Sprite" parent="."]
+texture = ExtResource( 6 )
+centered = false
+
+[node name="Seperators" type="Node2D" parent="ces_monitor"]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="ces_ui_head_long" type="Sprite" parent="ces_monitor/Seperators"]
+modulate = Color( 0.85098, 0.341176, 0.388235, 1 )
+texture = ExtResource( 13 )
+centered = false
+
+[node name="ces_ui_head_short" type="Sprite" parent="ces_monitor/Seperators"]
+modulate = Color( 0.67451, 0.196078, 0.196078, 1 )
+texture = ExtResource( 14 )
+centered = false
+
+[node name="ces_ui_seg_0_L" type="Sprite" parent="ces_monitor/Seperators"]
+modulate = Color( 0.67451, 0.196078, 0.196078, 1 )
+texture = ExtResource( 10 )
+centered = false
+
+[node name="ces_ui_seg_1_L" type="Sprite" parent="ces_monitor/Seperators"]
+modulate = Color( 0.85098, 0.341176, 0.388235, 1 )
+texture = ExtResource( 15 )
+centered = false
+
+[node name="ces_ui_seg_2_danger_L" type="Sprite" parent="ces_monitor/Seperators"]
+modulate = Color( 0.67451, 0.196078, 0.196078, 1 )
+texture = ExtResource( 9 )
+centered = false
+
+[node name="ces_ui_seg_3_L" type="Sprite" parent="ces_monitor/Seperators"]
+modulate = Color( 0.85098, 0.341176, 0.388235, 1 )
+texture = ExtResource( 12 )
+centered = false
+
+[node name="ces_ui_seg_4_mid" type="Sprite" parent="ces_monitor/Seperators"]
+modulate = Color( 0.67451, 0.196078, 0.196078, 1 )
+texture = ExtResource( 11 )
+centered = false
+
+[node name="ces_ui_seg_3_R" type="Sprite" parent="ces_monitor/Seperators"]
+modulate = Color( 0.85098, 0.341176, 0.388235, 1 )
+position = Vector2( 114, 0 )
+texture = ExtResource( 12 )
+centered = false
+
+[node name="ces_ui_seg_2_danger_R" type="Sprite" parent="ces_monitor/Seperators"]
+modulate = Color( 0.67451, 0.196078, 0.196078, 1 )
+position = Vector2( 114, 0 )
+texture = ExtResource( 9 )
+centered = false
+
+[node name="ces_ui_seg_1_R" type="Sprite" parent="ces_monitor/Seperators"]
+modulate = Color( 0.85098, 0.341176, 0.388235, 1 )
+position = Vector2( 114, 0 )
+texture = ExtResource( 15 )
+centered = false
+
+[node name="ces_ui_seg_0_R" type="Sprite" parent="ces_monitor/Seperators"]
+modulate = Color( 0.67451, 0.196078, 0.196078, 1 )
+show_behind_parent = true
+position = Vector2( 114, 0 )
+texture = ExtResource( 10 )
+centered = false
+
+[node name="Buttons" type="Node2D" parent="ces_monitor"]
+
+[node name="EjectionButton" type="Node2D" parent="ces_monitor/Buttons"]
+position = Vector2( 48, 61 )
+script = ExtResource( 20 )
+__meta__ = {
+"_edit_group_": true
+}
+OnColorName = "MATTER_COLOR"
+OffColorName = "DARKBLUE_COLOR"
+
+[node name="ces_eject-button_big_arrow" type="Sprite" parent="ces_monitor/Buttons/EjectionButton"]
+texture = ExtResource( 1 )
+centered = false
+
+[node name="ces_eject-button_border" type="Sprite" parent="ces_monitor/Buttons/EjectionButton"]
+texture = ExtResource( 4 )
+centered = false
+
+[node name="ces_eject-button_small-arrow_0" type="Sprite" parent="ces_monitor/Buttons/EjectionButton"]
+texture = ExtResource( 2 )
+centered = false
+
+[node name="ces_eject-button_small-arrow_1" type="Sprite" parent="ces_monitor/Buttons/EjectionButton"]
+texture = ExtResource( 5 )
+centered = false
+
+[node name="ces_eject-button_small-arrow_2" type="Sprite" parent="ces_monitor/Buttons/EjectionButton"]
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Area2D" type="Area2D" parent="ces_monitor/Buttons/EjectionButton"]
+script = ExtResource( 19 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ces_monitor/Buttons/EjectionButton/Area2D"]
+polygon = PoolVector2Array( 34, 0, 37, 2, 39, 5, 39, 43, 37, 46, 34, 48, 5, 48, 2, 46, 0, 43, 0, 5, 2, 2, 5, 0, 34, 0 )
+
+[node name="ToggleButton" type="Node2D" parent="ces_monitor/Buttons"]
+position = Vector2( 69, 10 )
+script = ExtResource( 21 )
+__meta__ = {
+"_edit_group_": true
+}
+OnColorName = "BLUE_COLOR"
+OffColorName = "DARKBLUE_COLOR"
+
+[node name="ces_toggle-button_border" type="Sprite" parent="ces_monitor/Buttons/ToggleButton"]
+texture = ExtResource( 17 )
+centered = false
+
+[node name="ces_toggle-button_inner" type="Sprite" parent="ces_monitor/Buttons/ToggleButton"]
+texture = ExtResource( 16 )
+centered = false
+
+[node name="Area2D" type="Area2D" parent="ces_monitor/Buttons/ToggleButton"]
+script = ExtResource( 19 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ces_monitor/Buttons/ToggleButton/Area2D"]
+polygon = PoolVector2Array( 0, 5, 2, 2, 5, 0, 42, 0, 45, 2, 47, 5, 47, 9, 45, 12, 42, 14, 5, 14, 2, 12, 0, 9 )
+
+[node name="SequenceButtons" type="Node2D" parent="ces_monitor/Buttons"]
+
+[node name="SequenceButton_0" parent="ces_monitor/Buttons/SequenceButtons" instance=ExtResource( 7 )]
+position = Vector2( 27, 95 )
+
+[node name="SequenceButton_1" parent="ces_monitor/Buttons/SequenceButtons" instance=ExtResource( 7 )]
+position = Vector2( 27, 78 )
+
+[node name="SequenceButton_2" parent="ces_monitor/Buttons/SequenceButtons" instance=ExtResource( 7 )]
+position = Vector2( 27, 61 )
+
+[node name="SequenceButton_3" parent="ces_monitor/Buttons/SequenceButtons" instance=ExtResource( 7 )]
+position = Vector2( 27, 44 )
+
+[node name="SequenceButton_4" parent="ces_monitor/Buttons/SequenceButtons" instance=ExtResource( 7 )]
+position = Vector2( 48, 44 )
+
+[node name="SequenceButton_5" parent="ces_monitor/Buttons/SequenceButtons" instance=ExtResource( 7 )]
+position = Vector2( 69, 44 )
+
+[node name="SequenceButton_6" parent="ces_monitor/Buttons/SequenceButtons" instance=ExtResource( 7 )]
+position = Vector2( 90, 44 )
+
+[node name="SequenceButton_7" parent="ces_monitor/Buttons/SequenceButtons" instance=ExtResource( 7 )]
+position = Vector2( 90, 61 )
+
+[node name="SequenceButton_8" parent="ces_monitor/Buttons/SequenceButtons" instance=ExtResource( 7 )]
+position = Vector2( 90, 78 )
+
+[node name="SequenceButton_9" parent="ces_monitor/Buttons/SequenceButtons" instance=ExtResource( 7 )]
+position = Vector2( 90, 95 )
+
+[node name="blogpost_gamescreen_v1" type="Sprite" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0.345098 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 8 )
+centered = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 2.0
+anims/move_down = SubResource( 1 )
+anims/move_up = SubResource( 2 )

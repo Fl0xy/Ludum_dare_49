@@ -10,12 +10,24 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Node2D",
+"class": "CESButton",
+"language": "GDScript",
+"path": "res://RCAS/CES/CESButton.gd"
+}, {
+"base": "Node2D",
 "class": "Device",
 "language": "GDScript",
 "path": "res://Components/Device/Device.gd"
+}, {
+"base": "CESButton",
+"class": "SequenceButton",
+"language": "GDScript",
+"path": "res://RCAS/CES/SequenceButton.gd"
 } ]
 _global_script_class_icons={
-"Device": ""
+"CESButton": "",
+"Device": "",
+"SequenceButton": ""
 }
 
 [application]
