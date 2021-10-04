@@ -1,44 +1,241 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://RCAS/MACControls/MACControl.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/ui_dial_border.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/ui_dial_seg_3.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/ui_dial_seg_4.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/ui_dial_seg_5.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/ui_dial_seg_2.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/ui_dial_number-circle.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/ui_dial_seg_1.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/ui_dial_seg_6.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/ui_dial_seg_9.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/ui_dial_seg_8.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/ui_dial_seg_7.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/ui_dial_seg_11.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/ui_dial_seg_10.png" type="Texture" id=14]
+[ext_resource path="res://RCAS/MACControls/AreaClick.gd" type="Script" id=15]
+[ext_resource path="res://Fonts/Beef'd custom.ttf" type="DynamicFontData" id=16]
+
+[sub_resource type="DynamicFont" id=2]
+size = 5
+extra_spacing_char = -1
+font_data = ExtResource( 16 )
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 5.76269
+
+[sub_resource type="DynamicFont" id=3]
+size = 5
+extra_spacing_char = -1
+font_data = ExtResource( 16 )
 
 [node name="maccontrol" type="Node2D"]
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
-[node name="plus" type="Button" parent="."]
-margin_left = 16.0
-margin_right = 36.0
-margin_bottom = 20.0
-text = "+"
+[node name="ui_dial_border" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ui_dial_number_circle" type="Sprite" parent="."]
+texture = ExtResource( 7 )
+centered = false
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="label" type="Label" parent="ui_dial_number_circle"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 19.8074
+margin_top = 19.0322
+margin_right = 26.8074
+margin_bottom = 27.0322
+custom_fonts/font = SubResource( 2 )
+text = "11"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="minus" type="Button" parent="."]
-margin_left = 16.0
-margin_top = 40.0
-margin_right = 36.0
-margin_bottom = 60.0
-text = "-"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Area2D" type="Area2D" parent="ui_dial_number_circle"]
 
-[node name="label" type="Label" parent="."]
-margin_left = 16.0
-margin_top = 24.0
-margin_right = 56.0
-margin_bottom = 38.0
-text = "00"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ui_dial_number_circle/Area2D"]
+position = Vector2( 23.507, 23.4868 )
+shape = SubResource( 1 )
 
-[node name="debug" type="Label" parent="."]
-margin_left = 16.0
-margin_top = 64.0
-margin_right = 56.0
-margin_bottom = 78.0
+[node name="ui_dial_seg_1" type="Sprite" parent="."]
+texture = ExtResource( 8 )
+centered = false
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_lock_": true
+}
+number = 1
+
+[node name="Area2D" type="Area2D" parent="ui_dial_seg_1"]
+position = Vector2( 23.5542, 29.1052 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ui_dial_seg_1/Area2D"]
+polygon = PoolVector2Array( -4.15308, 0.866974, -9.60983, 8.80154, -6.23089, 10.9622, -2.53194, 10.9388, -0.533798, 7.8828, -0.533798, 3.92944, -2.53832, 0.894814 )
+
+[node name="ui_dial_seg_2" type="Sprite" parent="."]
+texture = ExtResource( 6 )
+centered = false
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_lock_": true
+}
+number = 2
+
+[node name="Area2D" type="Area2D" parent="ui_dial_seg_2"]
+position = Vector2( 23.5542, 29.1052 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ui_dial_seg_2/Area2D"]
+polygon = PoolVector2Array( -6.99263, -2.1142, -15.6791, 2.37037, -10.3615, 8.10553, -6.85342, 3.67664, -4.45914, 0.474972 )
+
+[node name="ui_dial_seg_3" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+centered = false
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_lock_": true
+}
+number = 3
+
+[node name="Area2D" type="Area2D" parent="ui_dial_seg_3"]
+position = Vector2( 23.5542, 29.1052 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ui_dial_seg_3/Area2D"]
+polygon = PoolVector2Array( -7.57747, -5.06307, -7.5216, -2.50397, -16.4027, 0.976105, -17.6558, -5.09091 )
+
+[node name="ui_dial_seg_4" type="Sprite" parent="."]
+texture = ExtResource( 4 )
+centered = false
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_lock_": true
+}
+number = 4
+
+[node name="Area2D" type="Area2D" parent="ui_dial_seg_4"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ui_dial_seg_4/Area2D"]
+polygon = PoolVector2Array( 7.02541, 16.7939, 6.03125, 22.9062, 16.0625, 22.9375, 16, 20.0625 )
+
+[node name="ui_dial_seg_5" type="Sprite" parent="."]
+texture = ExtResource( 5 )
+centered = false
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_lock_": true
+}
+number = 5
+
+[node name="Area2D" type="Area2D" parent="ui_dial_seg_5"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ui_dial_seg_5/Area2D"]
+polygon = PoolVector2Array( 7.95432, 15.3385, 16.9124, 19.9687, 19.3005, 16.9862, 13.4579, 8.92706 )
+
+[node name="ui_dial_seg_6" type="Sprite" parent="."]
+texture = ExtResource( 9 )
+centered = false
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_lock_": true
+}
+number = 6
+
+[node name="Area2D" type="Area2D" parent="ui_dial_seg_6"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ui_dial_seg_6/Area2D"]
+polygon = PoolVector2Array( 14.9544, 8.51011, 20.0809, 16.8849, 22.9536, 15.8905, 23.0198, 5.96894, 18.9688, 6.125 )
+
+[node name="ui_dial_seg_7" type="Sprite" parent="."]
+texture = ExtResource( 12 )
+centered = false
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_lock_": true
+}
+number = 7
+
+[node name="Area2D" type="Area2D" parent="ui_dial_seg_7"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ui_dial_seg_7/Area2D"]
+polygon = PoolVector2Array( 24, 6, 24.125, 15.8125, 26.7812, 16.8438, 30.9688, 8.03125, 27.0625, 6.09375 )
+
+[node name="ui_dial_seg_8" type="Sprite" parent="."]
+texture = ExtResource( 11 )
+centered = false
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_lock_": true
+}
+number = 8
+
+[node name="Area2D" type="Area2D" parent="ui_dial_seg_8"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ui_dial_seg_8/Area2D"]
+polygon = PoolVector2Array( 27.9688, 17.5938, 31.4688, 9, 33.9062, 8.90625, 38.2188, 14, 30.3125, 19.0312 )
+
+[node name="ui_dial_seg_9" type="Sprite" parent="."]
+texture = ExtResource( 10 )
+centered = false
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_lock_": true
+}
+number = 9
+
+[node name="Area2D" type="Area2D" parent="ui_dial_seg_9"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ui_dial_seg_9/Area2D"]
+polygon = PoolVector2Array( 30.2188, 20.0938, 31.125, 22.8438, 41.0312, 22.875, 40.8438, 19.0625, 38.2188, 15.9062 )
+
+[node name="ui_dial_seg_10" type="Sprite" parent="."]
+texture = ExtResource( 14 )
+centered = false
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_lock_": true
+}
+number = 10
+
+[node name="Area2D" type="Area2D" parent="ui_dial_seg_10"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ui_dial_seg_10/Area2D"]
+position = Vector2( -0.533516, -0.357277 )
+polygon = PoolVector2Array( 41.5023, 24.3729, 41.5491, 28.2792, 39.4241, 31.451, 30.5491, 27.1073, 31.6429, 24.3729 )
+
+[node name="ui_dial_seg_11" type="Sprite" parent="."]
+texture = ExtResource( 13 )
+centered = false
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_lock_": true
+}
+number = 11
+
+[node name="Area2D" type="Area2D" parent="ui_dial_seg_11"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ui_dial_seg_11/Area2D"]
+position = Vector2( -0.533516, -0.357277 )
+polygon = PoolVector2Array( 30.0804, 27.8573, 38.6429, 32.4667, 36.4866, 36.3104, 31.6273, 36.4042, 28.4554, 31.7323 )
+
+[node name="Label" type="Label" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 4.75
+margin_top = 48.75
+margin_right = 44.75
+margin_bottom = 62.75
+custom_fonts/font = SubResource( 3 )
+text = "MATTER"
 __meta__ = {
 "_edit_use_anchors_": false
 }

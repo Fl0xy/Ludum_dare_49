@@ -86,10 +86,8 @@ centered = false
 texture = ExtResource( 1 )
 centered = false
 
-[node name="debug" type="Node2D" parent="."]
+[node name="Label" type="Label" parent="."]
 visible = false
-
-[node name="Label" type="Label" parent="debug"]
 margin_left = 8.0
 margin_top = 128.0
 margin_right = 58.0
@@ -99,7 +97,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="health" type="Label" parent="debug"]
+[node name="health" type="Label" parent="."]
+visible = false
 margin_left = 72.0
 margin_top = 128.0
 margin_right = 122.0
@@ -108,7 +107,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label2" type="Label" parent="debug"]
+[node name="Label2" type="Label" parent="."]
+visible = false
 margin_left = 8.0
 margin_top = 144.0
 margin_right = 58.0
@@ -118,7 +118,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="inMat" type="Label" parent="debug"]
+[node name="inMat" type="Label" parent="."]
+visible = false
 margin_left = 72.0
 margin_top = 144.0
 margin_right = 122.0
@@ -127,7 +128,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label3" type="Label" parent="debug"]
+[node name="Label3" type="Label" parent="."]
+visible = false
 margin_left = 8.0
 margin_top = 160.0
 margin_right = 58.0
@@ -137,7 +139,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="inAmat" type="Label" parent="debug"]
+[node name="inAmat" type="Label" parent="."]
+visible = false
 margin_left = 72.0
 margin_top = 160.0
 margin_right = 122.0
@@ -146,7 +149,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label4" type="Label" parent="debug"]
+[node name="Label4" type="Label" parent="."]
+visible = false
 margin_left = 8.0
 margin_top = 176.0
 margin_right = 59.0
@@ -156,7 +160,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="outPow" type="Label" parent="debug"]
+[node name="outPow" type="Label" parent="."]
+visible = false
 margin_left = 72.0
 margin_top = 176.0
 margin_right = 122.0
@@ -165,7 +170,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label5" type="Label" parent="debug"]
+[node name="Label5" type="Label" parent="."]
+visible = false
 margin_left = 8.0
 margin_top = 192.0
 margin_right = 59.0
@@ -175,7 +181,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="outMat" type="Label" parent="debug"]
+[node name="outMat" type="Label" parent="."]
+visible = false
 margin_left = 72.0
 margin_top = 192.0
 margin_right = 122.0
@@ -184,7 +191,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label6" type="Label" parent="debug"]
+[node name="Label6" type="Label" parent="."]
+visible = false
 margin_left = 8.0
 margin_top = 208.0
 margin_right = 69.0
@@ -194,7 +202,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="storeMat" type="Label" parent="debug"]
+[node name="storeMat" type="Label" parent="."]
+visible = false
 margin_left = 72.0
 margin_top = 208.0
 margin_right = 122.0

@@ -2,7 +2,7 @@ tool
 extends Node2D
 class_name Device
 
-const BAR_LENGTH: int  = 23
+const BAR_LENGTH: int  = 22
 
 export(String) var dname: String = "WARP" setget changeName
 export(float) var eusage: float = 0 setget changeEUsage
@@ -25,14 +25,22 @@ signal feedbackloop()
 
 func _ready():
 	$Button.connect("pressed", self, "toggle")
+	$Area2D.connect("input_event", self, "area2DClickedHelper")
 	timer = timeToDead
 	
 	self.ebuf = self.ebufSize / 2
 	if (self.mbufSize != 0):
 		self.mbuf = self.mbufSize / 2
-	
-		
+
+func area2DClickedHelper(viewport, event, shape_idx):
+	if event is InputEventMouseButton && event.pressed:
+		toggle()
+
 func _physics_process(delta):
+	
+	if (!self.connected):
+		self.inEnergie = 0
+		self.inMatter = 0
 	
 	var damage: bool = false
 	
@@ -97,12 +105,12 @@ func changeConnected(newConnected: bool):
 
 func changeEbuf(newEbuf: float):
 	ebuf = newEbuf
-	$enrBar.transform = Vector2((ebuf/self.ebufSize)*BAR_LENGTH, 3)
+	$enrBar.scale = Vector2(clamp((ebuf/self.ebufSize)*BAR_LENGTH, 0 , BAR_LENGTH), 3)
 	$ebuf.text = str(ebuf) + "/" + str(ebufSize)
 	
 func changeMbuf(newMbuf: float):
 	mbuf = newMbuf
-	$matBar.transform = Vector2(abs((ebuf/self.ebufSize)*BAR_LENGTH), 3)
+	$matBar.scale = Vector2(clamp(abs((mbuf/self.mbufSize)*BAR_LENGTH), 0 , BAR_LENGTH) , 3)
 	$mbuf.text = str(mbuf) + "/" + str(mbufSize)
 	
 func changeEUsage(newEUsage: float):

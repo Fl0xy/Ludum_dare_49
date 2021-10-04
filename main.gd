@@ -15,6 +15,9 @@ func _ready():
 	$device2.connect("deviceConnect", $warpCore, "connectDevice")
 	$device2.connect("deviceDisconnect", $warpCore, "disconnectDevice")
 	$device2.connect("feedbackloop", self, "makeKaputt")
+	$device3.connect("deviceConnect", $warpCore, "connectDevice")
+	$device3.connect("deviceDisconnect", $warpCore, "disconnectDevice")
+	$device3.connect("feedbackloop", self, "makeKaputt")
 
 func makeKaputt():
 	$warpCore.changeHealth($warpCore.health - 0.1)
