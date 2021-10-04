@@ -1,0 +1,359 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://white_pixel.png.png" type="Texture" id=1]
+[ext_resource path="res://Components/Device/Device.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Sprites/ui_symbole_anti-m.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/ui_symbole_energy.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/ui_symbole_matter.png" type="Texture" id=5]
+[ext_resource path="res://RCAS/Tutorial/1.gd" type="Script" id=6]
+[ext_resource path="res://RCAS/Tutorial/2.gd" type="Script" id=7]
+[ext_resource path="res://RCAS/new_theme.tres" type="Theme" id=8]
+[ext_resource path="res://RCAS/Tutorial/Tutorial.gd" type="Script" id=9]
+[ext_resource path="res://RCAS/MAC/MAC.tscn" type="PackedScene" id=10]
+[ext_resource path="res://RCAS/Tutorial/3.gd" type="Script" id=11]
+
+[node name="tutorial" type="Control"]
+theme = ExtResource( 8 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="1" type="Node2D" parent="."]
+visible = false
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="bg" type="Sprite" parent="1"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 47, 21 )
+scale = Vector2( 332, 160 )
+texture = ExtResource( 1 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Text1" type="Label" parent="1"]
+margin_left = 59.0
+margin_top = 29.0
+margin_right = 364.0
+margin_bottom = 95.0
+text = "Welcome LT. Commander
+Today your traning as a Warp Core Controller starts.
+The Basics first, we have three Resources to Manage
+
+"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="ui_symbole_energy" type="Sprite" parent="1"]
+position = Vector2( 68, 72 )
+texture = ExtResource( 4 )
+centered = false
+
+[node name="energy" type="Label" parent="1"]
+margin_left = 74.0
+margin_top = 70.0
+margin_right = 111.0
+margin_bottom = 78.0
+text = "Energy"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui_symbole_matter" type="Sprite" parent="1"]
+position = Vector2( 122, 72 )
+texture = ExtResource( 5 )
+centered = false
+
+[node name="matter" type="Label" parent="1"]
+margin_left = 128.0
+margin_top = 70.0
+margin_right = 165.0
+margin_bottom = 79.0
+text = "Matter"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui_symbole_anti-m" type="Sprite" parent="1"]
+position = Vector2( 172, 72 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="antimatter" type="Label" parent="1"]
+margin_left = 178.0
+margin_top = 70.0
+margin_right = 245.0
+margin_bottom = 79.0
+text = "Anti-Matter"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text2" type="Label" parent="1"]
+margin_left = 60.0
+margin_top = 88.0
+margin_right = 365.0
+margin_bottom = 154.0
+text = "Energy gets produced in the Warp Core From 
+the 1:1 Annihilation of Matter and
+Anti-Matter particles
+excess matter or anti-matter accumulates in the Core
+High Values could damage it.
+But some devices need it."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="1"]
+margin_left = 326.0
+margin_top = 154.0
+margin_right = 357.0
+margin_bottom = 170.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="1/Button"]
+modulate = Color( 0.85098, 0.341176, 0.388235, 1 )
+margin_left = 9.0
+margin_top = 3.0
+margin_right = 27.0
+margin_bottom = 11.0
+text = "OK"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="2" type="Node2D" parent="."]
+visible = false
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="bg" type="Sprite" parent="2"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 47, 21 )
+scale = Vector2( 332, 190 )
+texture = ExtResource( 1 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="1" type="Label" parent="2"]
+margin_left = 53.0
+margin_top = 32.0
+margin_right = 144.0
+margin_bottom = 40.0
+text = "These are the
+Matter Anti-
+MAtter Controls
+in Short MAC
+Clicking on the
+2 Rings Controls
+The matter and 
+Anti-matter Valves
+of the reactor"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="mac" parent="2" instance=ExtResource( 10 )]
+position = Vector2( 169, 39 )
+
+[node name="2" type="Label" parent="2"]
+margin_left = 275.0
+margin_top = 157.0
+margin_right = 374.0
+margin_bottom = 176.0
+text = "Pow (Power) shows 
+the Output Power"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="3" type="Label" parent="2"]
+margin_left = 53.0
+margin_top = 148.0
+margin_right = 247.0
+margin_bottom = 178.0
+text = "MAM (MAtter Anti-Matter) 
+shows the accumulated Particles 
+in the Core, shouldn't get to high"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="4" type="Label" parent="2"]
+modulate = Color( 0.85098, 0.341176, 0.388235, 1 )
+margin_left = 39.0
+margin_top = 186.0
+margin_right = 390.0
+margin_bottom = 194.0
+text = "turn Matter and Anti-Matter Values 
+to 11 to close this window"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="3" type="Node2D" parent="."]
+visible = false
+position = Vector2( -12, -2 )
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="bg" type="Sprite" parent="3"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 47, 21 )
+scale = Vector2( 332, 180 )
+texture = ExtResource( 1 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="1" type="Label" parent="3"]
+margin_left = 53.0
+margin_top = 32.0
+margin_right = 144.0
+margin_bottom = 40.0
+text = "These Are The Devices we need
+to Power.
+They Can Be Connected to 
+The Core By Clicking on them.
+
+Devices have different requierments.
+Warp Engines (WARP) only need Energy.
+Impulse Engines (IMPL) also need Matter.
+And the PHasers (PHSR) need 
+Energy and anti-Matter
+
+The small Energy Buffer Bars shouldn't be Full or Empty
+or the Device could trigger a overload which damages
+The Warp Core "
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="ui_symbole_energy" type="Sprite" parent="3"]
+position = Vector2( 251, 39 )
+texture = ExtResource( 4 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="warp" parent="3" instance=ExtResource( 2 )]
+position = Vector2( 257, 48 )
+eusage = 0.2
+musage = 0.2
+ebufSize = 1000.0
+mbufSize = 0.0
+
+[node name="energy" type="Label" parent="3"]
+margin_left = 257.0
+margin_top = 37.0
+margin_right = 294.0
+margin_bottom = 45.0
+text = "Energy"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="ui_symbole_matter" type="Sprite" parent="3"]
+position = Vector2( 303, 39 )
+texture = ExtResource( 5 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="impl" parent="3" instance=ExtResource( 2 )]
+position = Vector2( 306, 48 )
+dname = "IMPL"
+eusage = 0.2
+musage = 0.2
+ebufSize = 500.0
+mbufSize = 1000.0
+
+[node name="matter" type="Label" parent="3"]
+margin_left = 309.0
+margin_top = 37.0
+margin_right = 346.0
+margin_bottom = 46.0
+text = "Matter"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="ui_symbole_anti-m" type="Sprite" parent="3"]
+position = Vector2( 265, 133 )
+texture = ExtResource( 3 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="phsr" parent="3" instance=ExtResource( 2 )]
+position = Vector2( 284, 126 )
+top = true
+dname = "PHSR"
+eusage = 0.2
+musage = -0.2
+ebufSize = 700.0
+mbufSize = -500.0
+
+[node name="antimatter" type="Label" parent="3"]
+margin_left = 271.0
+margin_top = 131.0
+margin_right = 338.0
+margin_bottom = 140.0
+text = "Anti-Matter"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="2" type="Label" parent="3"]
+modulate = Color( 0.85098, 0.341176, 0.388235, 1 )
+margin_left = 99.0
+margin_top = 190.0
+margin_right = 334.0
+margin_bottom = 198.0
+text = "connect All Devices to Close this Window"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="close" from="1" to="." method="_on_1_close"]
+[connection signal="pressed" from="1/Button" to="1" method="_on_Button_pressed"]
+[connection signal="close" from="2" to="." method="_on_2_close"]
+[connection signal="close" from="3" to="." method="_on_3_close"]
+[connection signal="deviceConnect" from="3/warp" to="3" method="_on_warp_deviceConnect"]
+[connection signal="deviceDisconnect" from="3/warp" to="3" method="_on_warp_deviceDisconnect"]
+[connection signal="deviceConnect" from="3/impl" to="3" method="_on_impl_deviceConnect"]
+[connection signal="deviceDisconnect" from="3/impl" to="3" method="_on_impl_deviceDisconnect"]
+[connection signal="deviceConnect" from="3/phsr" to="3" method="_on_phsr_deviceConnect"]
+[connection signal="deviceDisconnect" from="3/phsr" to="3" method="_on_phsr_deviceDisconnect"]
