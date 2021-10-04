@@ -25,49 +25,49 @@ position = Vector2( 2, 0 )
 texture = ExtResource( 2 )
 centered = false
 
-[node name="device" parent="." instance=ExtResource( 3 )]
+[node name="warp" parent="." instance=ExtResource( 3 )]
 position = Vector2( 0, 56 )
 top = true
 mbufSize = 0.0
 
-[node name="device2" parent="." instance=ExtResource( 3 )]
+[node name="impl" parent="." instance=ExtResource( 3 )]
 position = Vector2( 39, 56 )
 top = true
 dname = "IMPL"
 
-[node name="device3" parent="." instance=ExtResource( 3 )]
+[node name="phsr" parent="." instance=ExtResource( 3 )]
 position = Vector2( 78, 56 )
 top = true
 dname = "PHSR"
 mbufSize = -100.0
 
-[node name="device4" parent="." instance=ExtResource( 3 )]
+[node name="snsr" parent="." instance=ExtResource( 3 )]
 position = Vector2( 117, 56 )
 top = true
 dname = "SNSR"
 mbufSize = 0.0
 
-[node name="device5" parent="." instance=ExtResource( 3 )]
+[node name="dflc" parent="." instance=ExtResource( 3 )]
 position = Vector2( 156, 56 )
 top = true
 dname = "DFLC"
 mbufSize = -100.0
 
-[node name="device6" parent="." instance=ExtResource( 3 )]
+[node name="shld" parent="." instance=ExtResource( 3 )]
 position = Vector2( 0, 76 )
 dname = "SHLD"
 mbufSize = 0.0
 
-[node name="device7" parent="." instance=ExtResource( 3 )]
+[node name="holo" parent="." instance=ExtResource( 3 )]
 position = Vector2( 39, 76 )
 dname = "HOLO"
 
-[node name="device8" parent="." instance=ExtResource( 3 )]
+[node name="torp" parent="." instance=ExtResource( 3 )]
 position = Vector2( 78, 76 )
 dname = "TORP"
 mbufSize = -100.0
 
-[node name="device9" parent="." instance=ExtResource( 3 )]
+[node name="tnsp" parent="." instance=ExtResource( 3 )]
 position = Vector2( 117, 76 )
 dname = "TNSP"
 

@@ -15,12 +15,14 @@ font_data = ExtResource( 4 )
 
 [node name="powChart" type="Node2D"]
 script = ExtResource( 7 )
-inPower = 11.0
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="bar" type="Sprite" parent="."]
 modulate = Color( 0.356863, 0.431373, 0.882353, 1 )
 position = Vector2( 7, 58 )
-scale = Vector2( 11, -46 )
+scale = Vector2( 11, 1e-05 )
 texture = ExtResource( 6 )
 centered = false
 

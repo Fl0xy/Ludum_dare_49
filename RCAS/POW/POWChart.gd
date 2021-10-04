@@ -5,7 +5,7 @@ const MAX_POWER = 11
 const MAX_HIGHT = 46
 const WIDTH = 11
 
-export(float) var inPower setget changeInPower
+export(float) var inPower = 0 setget changeInPower
 
 func _ready():
 	pass # Replace with function body.
