@@ -5,7 +5,7 @@ func _ready():
 	$mmonitor/mac/antiMatterControl.connect("valueChanged", $warpCore, "changeInAntiMatterFlow")
 	$mmonitor/mac/matterControl.connect("valueChanged", $warpCore, "changeInMatterFlow")
 	
-	$warpCore.connect("outputPlasmaChanged", $mmonitor/mac/mamChart, "changeInPlasma")
+	$warpCore.connect("matStoreChanged", $mmonitor/mac/mamChart, "changePlasma")
 	$warpCore.connect("outputPowerChanged", $mmonitor/mac/powChart, "changeInPower")
 	
 	$mmonitor/pcg/warp.connect("deviceConnect", $warpCore, "connectDevice")

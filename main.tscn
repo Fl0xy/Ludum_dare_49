@@ -1,11 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Components/WarpCore/WarpCore.tscn" type="PackedScene" id=1]
 [ext_resource path="res://main.gd" type="Script" id=2]
 [ext_resource path="res://RCAS/MAC/MAC.tscn" type="PackedScene" id=3]
 [ext_resource path="res://RCAS/PCG/PCG.tscn" type="PackedScene" id=4]
-[ext_resource path="res://RCAS/HBar/HBar.tscn" type="PackedScene" id=5]
-[ext_resource path="res://RCAS/PlasmaMix/PlasmaMix.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Sprites/ui_pcg_mac_monitor.png" type="Texture" id=7]
 
 [node name="Main" type="Node2D"]
@@ -16,14 +14,8 @@ __meta__ = {
 
 [node name="warpCore" parent="." instance=ExtResource( 1 )]
 position = Vector2( 14, 0 )
-
-[node name="powerHBar" parent="." instance=ExtResource( 5 )]
-position = Vector2( 1936, 576 )
-scale = Vector2( 2, 2 )
-
-[node name="plasmaMix" parent="." instance=ExtResource( 6 )]
-position = Vector2( 1800, 512 )
-scale = Vector2( 2, 2 )
+matStoreSize = 100.0
+matStoreFullDamageTime = 100.0
 
 [node name="mmonitor" type="Sprite" parent="."]
 position = Vector2( 168, 0 )

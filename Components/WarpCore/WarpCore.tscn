@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Sprites/reactor_metal_rods.png" type="Texture" id=1]
 [ext_resource path="res://Components/WarpCore/WarpCore.gd" type="Script" id=2]
 [ext_resource path="res://Sprites/reactor_middlesection.png" type="Texture" id=3]
 [ext_resource path="res://Sprites/reactor_plasma_ring_segment.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/reactor_middlesection_bg.png" type="Texture" id=5]
+[ext_resource path="res://white_pixel.png.png" type="Texture" id=6]
 
 [node name="warpCore" type="Node2D"]
 script = ExtResource( 2 )
@@ -76,6 +78,24 @@ centered = false
 [node name="reactor_plasma_ring_segmentB8" type="Sprite" parent="."]
 position = Vector2( 19, 113 )
 texture = ExtResource( 4 )
+centered = false
+
+[node name="reactor_middlesection_bg" type="Sprite" parent="."]
+texture = ExtResource( 5 )
+centered = false
+
+[node name="matterBar" type="Sprite" parent="."]
+modulate = Color( 0.87451, 0.443137, 0.14902, 1 )
+position = Vector2( 40, 94 )
+scale = Vector2( 1, 14 )
+texture = ExtResource( 6 )
+centered = false
+
+[node name="antiMatterBar" type="Sprite" parent="."]
+modulate = Color( 0.984314, 0.94902, 0.211765, 1 )
+position = Vector2( 123, 94 )
+scale = Vector2( 1, 14 )
+texture = ExtResource( 6 )
 centered = false
 
 [node name="reactor_middlesection" type="Sprite" parent="."]

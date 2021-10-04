@@ -1,6 +1,9 @@
 extends Node2D
 
 export(bool) var on: bool = true
+export(float) var matStoreSize: float
+export(float) var matStoreFullDamageTime: float
+var timer: float 
 
 ## device
 var devices = []
@@ -21,6 +24,7 @@ var inAntiMatterFlow: float setget changeInAntiMatterFlow
 var health: float setget changeHealth
 signal healthChanged(health)
 var matStore: float setget changeMatStore
+signal matStoreChanged(stored, maxStore)
 
 func _ready():
 	randomize()
@@ -74,6 +78,15 @@ func  _process(delta):
 			for device in self.antiMatterDevices:
 				device.changeInMatter(0)
 		
+		if (self.timer <= 0):
+			health -= 0.1 # damage
+			self.timer = self.matStoreFullDamageTime
+		
+		if (matStore > matStoreSize):
+			self.timer -= delta # timer tick
+		else: # repair
+			if (self.timer < self.matStoreFullDamageTime):
+				self.timer += delta/2
 
 func connectDevice(device: Device):
 	if (self.devices.has(device)):
@@ -115,3 +128,4 @@ func changeInAntiMatterFlow(newInAntiMatterFlow: float):
 func changeMatStore(newMatStore: float):
 	matStore = newMatStore
 	$storeMat.text = str(matStore)
+	emit_signal("matStoreChanged", matStore, matStoreSize)

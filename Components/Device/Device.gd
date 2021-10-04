@@ -97,12 +97,14 @@ func changeConnected(newConnected: bool):
 		$ui_device_name_tag.modulate = Style.ON_COLOR
 		$ui_device_energy_bar.modulate = Style.ON_COLOR
 		$ui_device_excess_bar.modulate = Style.ON_COLOR
+		$ui_device_excess_bar_off.modulate = Style.ON_COLOR
 	else:
 		$connected.text = "false"
 		emit_signal("deviceDisconnect", self)
 		$ui_device_name_tag.modulate = Style.OFF_COLOR
 		$ui_device_energy_bar.modulate = Style.OFF_COLOR
 		$ui_device_excess_bar.modulate = Style.OFF_COLOR
+		$ui_device_excess_bar_off.modulate = Style.OFF_COLOR
 
 func changeEbuf(newEbuf: float):
 	ebuf = newEbuf
@@ -167,18 +169,21 @@ func changeTop(newTop):
 		$ui_device_excess_bar.scale = Vector2(1,-1)
 		$ui_device_excess_bar_off.scale = Vector2(1,-1)
 		$ui_device_name_tag.scale = Vector2(1,-1)
+		$Area2D.scale = Vector2(1,-1)
 		$name.rect_position = Vector2(6,-28)
 		$matBar.position = Vector2(5,-7)
 		$enrBar.position = Vector2(5,-13)
 		$ui_symbole_energy.position = Vector2(29, -14)
 		$ui_symbole_matter.position = Vector2(29,-8)
 		$ui_symbole_antim.position = Vector2(29,-8)
+	
 	else:
 		$ui_device_border.scale = Vector2(1,1)
 		$ui_device_energy_bar.scale = Vector2(1,1)
 		$ui_device_excess_bar.scale = Vector2(1,1)
 		$ui_device_excess_bar_off.scale = Vector2(1,1)
 		$ui_device_name_tag.scale = Vector2(1,1)
+		$Area2D.scale = Vector2(1,1)
 		$name.rect_position = Vector2(6,19)
 		$matBar.position = Vector2(5,4)
 		$enrBar.position = Vector2(5,10)
