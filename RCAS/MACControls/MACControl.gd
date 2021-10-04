@@ -4,7 +4,7 @@ extends Node2D
 const MAX = 11
 
 enum modeEnum {matter, anitmatter}
-export(modeEnum) var mode
+export(modeEnum) var mode setget changeMode
 var value: float setget changeValue
 signal valueChanged(value)
 var state: int setget changeState
@@ -40,7 +40,6 @@ func _ready():
 		$Label.text = "MATTER"
 	else:
 		$Label.text = "ANTI-M"
-	
 	self.state = 0
 
 func changeState(newState: int):
@@ -53,6 +52,15 @@ func changeValue(newValue):
 	value = newValue
 	emit_signal("valueChanged", value)
 
+func changeMode(newMode):
+	mode = newMode
+	if (mode == modeEnum.matter):
+		$Label.text = "MATTER"
+	else:
+		$Label.text = "ANTI-M"
+	
+	self.state = 0
 
 func _on_Area2D_pressed(number):
 	self.state = number
+	

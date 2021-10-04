@@ -32,9 +32,6 @@ font_data = ExtResource( 16 )
 
 [node name="maccontrol" type="Node2D"]
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="ui_dial_border" type="Sprite" parent="."]
 texture = ExtResource( 2 )
@@ -58,7 +55,7 @@ margin_top = 19.0322
 margin_right = 26.8074
 margin_bottom = 27.0322
 custom_fonts/font = SubResource( 2 )
-text = "11"
+text = "0"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -66,6 +63,7 @@ __meta__ = {
 [node name="Area2D" type="Area2D" parent="ui_dial_number_circle"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ui_dial_number_circle/Area2D"]
+visible = false
 position = Vector2( 23.507, 23.4868 )
 shape = SubResource( 1 )
 

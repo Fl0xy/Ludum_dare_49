@@ -1,3 +1,4 @@
+tool
 extends Sprite
 
 enum modeEnum {matter, anitmatter}
