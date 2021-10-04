@@ -1,5 +1,7 @@
 extends Node2D
 
+signal feedbackloop
+
 var warp_feed = preload("res://RCAS/feedback/warp_feedback.tscn")
 var impl_feed = preload("res://RCAS/feedback/impl_feedback.tscn")
 var phsr_feed = preload("res://RCAS/feedback/phsr_feedback.tscn")
@@ -23,7 +25,7 @@ func _ready():
 	$torp.connect("feedbackloop", self, "torp_feedback")
 	$tnsp.connect("feedbackloop", self, "tnsp_feedback")
 
-	debug()
+	# debug()
 
 func debug():
 	warp_feedback()
@@ -36,31 +38,51 @@ func debug():
 	torp_feedback()
 	tnsp_feedback()
 	
+func emit_feedbackloop(anim_name: String):
+	emit_signal("feedbackloop")
 
 func warp_feedback():
-	add_child(warp_feed.instance())
-
+	var node = warp_feed.instance() 
+	add_child(node)
+	node.get_node("AnimationPlayer").connect("animation_finished", self, "emit_feedbackloop")
+	
 func impl_feedback():
-	add_child(impl_feed.instance())
+	var node = impl_feed.instance() 
+	add_child(node)
+	node.get_node("AnimationPlayer").connect("animation_finished", self, "emit_feedbackloop")
 
 func phsr_feedback():
-	add_child(phsr_feed.instance())
+	var node = phsr_feed.instance() 
+	add_child(node)
+	node.get_node("AnimationPlayer").connect("animation_finished", self, "emit_feedbackloop")
 
 func snsr_feedback():
-	add_child(snsr_feed.instance())
+	var node = snsr_feed.instance() 
+	add_child(node)
+	node.get_node("AnimationPlayer").connect("animation_finished", self, "emit_feedbackloop")
 
 func dflc_feedback():
-	add_child(dflc_feed.instance())
+	var node = dflc_feed.instance() 
+	add_child(node)
+	node.get_node("AnimationPlayer").connect("animation_finished", self, "emit_feedbackloop")
 
 func shld_feedback():
-	add_child(shld_feed.instance())
+	var node = shld_feed.instance() 
+	add_child(node)
+	node.get_node("AnimationPlayer").connect("animation_finished", self, "emit_feedbackloop")
 
 func holo_feedback():
-	add_child(holo_feed.instance())
+	var node = holo_feed.instance() 
+	add_child(node)
+	node.get_node("AnimationPlayer").connect("animation_finished", self, "emit_feedbackloop")
 
 func torp_feedback():
-	add_child(torp_feed.instance())
+	var node = torp_feed.instance() 
+	add_child(node)
+	node.get_node("AnimationPlayer").connect("animation_finished", self, "emit_feedbackloop")
 
 func tnsp_feedback():
-	add_child(tnsp_feed.instance())
+	var node = tnsp_feed.instance() 
+	add_child(node)
+	node.get_node("AnimationPlayer").connect("animation_finished", self, "emit_feedbackloop")
 
