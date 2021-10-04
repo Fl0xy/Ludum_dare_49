@@ -93,8 +93,8 @@ centered = false
 
 [node name="antiMatterBar" type="Sprite" parent="."]
 modulate = Color( 0.984314, 0.94902, 0.211765, 1 )
-position = Vector2( 123, 94 )
-scale = Vector2( 1, 14 )
+position = Vector2( 124, 94 )
+scale = Vector2( -1, 14 )
 texture = ExtResource( 6 )
 centered = false
 
