@@ -2,7 +2,7 @@ extends Node2D
 
 signal eject_core
 
-var minimized : bool = false
+export var minimized : bool = false
 
 export var SequenceButtonPressTimeUntilNext : float = 3.0
 onready var sequence_button_press_time_remaining_until_next : float = SequenceButtonPressTimeUntilNext
@@ -62,6 +62,12 @@ func _ready():
 	current_active_sequence_button.inner_on()
 	
 	reset_toggle_button()
+	if minimized:
+		$ces_monitor.position.y = 94
+	else:
+		$ces_monitor.position.y = 0
+	
+	
 
 func eject():
 	ejection_started = true
