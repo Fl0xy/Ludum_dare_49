@@ -8,6 +8,8 @@ export_presets.cfg
 .mono/
 data_*/
 
+#bins
+out/
 
 #dolphin
 .directory
