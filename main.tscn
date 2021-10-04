@@ -33,4 +33,4 @@ position = Vector2( 36, 121 )
 [node name="CES" parent="." instance=ExtResource( 6 )]
 
 [node name="tutorial" parent="." instance=ExtResource( 5 )]
-enable = false
+pause_mode = 2

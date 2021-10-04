@@ -11,6 +11,7 @@ signal done
 
 func _ready():
 	if (enable):
+		get_tree().paused = true
 		one = true
 		timer = delay
 
@@ -52,5 +53,6 @@ func _on_2_close():
 
 func _on_3_close():
 	$"3".visible = false
+	get_tree().paused = false
 	emit_signal("done")
 	queue_free()

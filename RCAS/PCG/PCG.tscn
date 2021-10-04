@@ -28,48 +28,60 @@ centered = false
 [node name="warp" parent="." instance=ExtResource( 3 )]
 position = Vector2( 0, 56 )
 top = true
+ebufSize = 1000.0
 mbufSize = 0.0
 
 [node name="impl" parent="." instance=ExtResource( 3 )]
 position = Vector2( 39, 56 )
 top = true
 dname = "IMPL"
+ebufSize = 1000.0
+mbufSize = 1000.0
 
 [node name="phsr" parent="." instance=ExtResource( 3 )]
 position = Vector2( 78, 56 )
 top = true
 dname = "PHSR"
-mbufSize = -100.0
+ebufSize = 500.0
+mbufSize = -500.0
 
 [node name="snsr" parent="." instance=ExtResource( 3 )]
 position = Vector2( 117, 56 )
 top = true
 dname = "SNSR"
+ebufSize = 500.0
 mbufSize = 0.0
 
 [node name="dflc" parent="." instance=ExtResource( 3 )]
 position = Vector2( 156, 56 )
 top = true
 dname = "DFLC"
-mbufSize = -100.0
+ebufSize = 1000.0
+mbufSize = -1000.0
 
 [node name="shld" parent="." instance=ExtResource( 3 )]
 position = Vector2( 0, 76 )
 dname = "SHLD"
+ebufSize = 800.0
 mbufSize = 0.0
 
 [node name="holo" parent="." instance=ExtResource( 3 )]
 position = Vector2( 39, 76 )
 dname = "HOLO"
+ebufSize = 1000.0
+mbufSize = 1000.0
 
 [node name="torp" parent="." instance=ExtResource( 3 )]
 position = Vector2( 78, 76 )
 dname = "TORP"
-mbufSize = -100.0
+ebufSize = 300.0
+mbufSize = -300.0
 
 [node name="tnsp" parent="." instance=ExtResource( 3 )]
 position = Vector2( 117, 76 )
 dname = "TNSP"
+ebufSize = 200.0
+mbufSize = 200.0
 
 [node name="ui_lane_1" type="Sprite" parent="."]
 position = Vector2( 101.5, 89.5 )

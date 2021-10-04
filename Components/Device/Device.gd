@@ -38,6 +38,8 @@ func area2DClickedHelper(viewport, event, shape_idx):
 		toggle()
 
 func _physics_process(delta):
+	if (!visible):
+		return
 	
 	if (!self.connected):
 		self.inEnergie = 0

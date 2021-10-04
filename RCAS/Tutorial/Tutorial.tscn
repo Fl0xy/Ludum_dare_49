@@ -42,8 +42,8 @@ margin_left = 59.0
 margin_top = 29.0
 margin_right = 364.0
 margin_bottom = 95.0
-text = "Welcome LT. Commander
-Today your traning as a Warp Core Controller starts.
+text = "Welcome Ensign
+Today your training as a Warp Core engineer starts.
 The Basics first, we have three Resources to Manage
 
 "
@@ -160,12 +160,13 @@ margin_bottom = 40.0
 text = "These are the
 Matter Anti-
 MAtter Controls
-in Short MAC
-Clicking on the
-2 Rings Controls
-The matter and 
-Anti-matter Valves
-of the reactor"
+in Short MAC.
+
+Open the
+Matter And Anti-
+Matter valves
+with the Ring
+Controllers"
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
@@ -191,9 +192,9 @@ margin_left = 53.0
 margin_top = 148.0
 margin_right = 247.0
 margin_bottom = 178.0
-text = "MAM (MAtter Anti-Matter) 
+text = "MAM (Matter Anti-Matter) 
 shows the accumulated Particles 
-in the Core, shouldn't get to high"
+in the Core (shouldn't get to high)"
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
