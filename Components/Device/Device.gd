@@ -1,16 +1,18 @@
+tool
 extends Node2D
 class_name Device
 
 const BAR_LENGTH: int  = 23
 
-export(float) var eusage setget changeEUsage
-export(float) var musage setget changeMUsage
+export(String) var dname: String = "WARP" setget changeName
+export(float) var eusage: float = 0 setget changeEUsage
+export(float) var musage: float = 0 setget changeMUsage
 export(float) var inEnergie setget changeInEnergie
 export(float) var inMatter setget changeInMatter
-export(float) var ebufSize
-export(float) var mbufSize
-export(float) var timeToDead
-export(bool) var connected: bool setget changeConnected
+export(float) var ebufSize: float = 100
+export(float) var mbufSize: float = 100 setget changeMBufSize
+export(float) var timeToDead: float = 100
+export(bool) var connected: bool = false setget changeConnected
 
 var timer: float setget changeTimer
 var ebuf: float setget changeEbuf
@@ -123,11 +125,27 @@ func changeTimer(newTimer):
 	timer = newTimer
 	$timer.text = str(timer)
 	
+func changeName(newName):
+	dname = newName
+	$name.text = dname
+	
 func changeMBufSize(newMBufSize):
 	mbufSize = newMBufSize
-	if (mbufSize < 0): #antimatter
+	if (mbufSize != 0):
+		$ui_device_excess_bar_off.visible = false
+		$ui_device_excess_bar.visible = true
+		$matBar.visible = true
+		if (mbufSize < 0): #antimatter
+			$ui_symbole_matter.visible = false
+			$ui_symbole_antim.visible = true
+			$matBar.modulate = Style.ANTIMATTER_COLOR
+		else: #matter
+			$ui_symbole_matter.visible = true
+			$ui_symbole_antim.visible = false
+			$matBar.modulate = Style.MATTER_COLOR
+	else: #no matter buffer
 		$ui_symbole_matter.visible = false
-		$ui_symbole_antim.visible = true
-		$matBar.modulate = Style.ANTIMATTER_COLOR
-	elif(mbufSize > 0): #matter
-		
+		$ui_symbole_antim.visible = false
+		$matBar.visible = false
+		$ui_device_excess_bar.visible = false
+		$ui_device_excess_bar_off.visible = true

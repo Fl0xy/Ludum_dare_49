@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Components/Device/Device.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/Beef'd.ttf" type="DynamicFontData" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Sprites/ui_symbole_energy.png" type="Texture" id=9]
 [ext_resource path="res://Fonts/Beef'd custom.ttf" type="DynamicFontData" id=10]
 [ext_resource path="res://Sprites/ui_symbole_matter.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/ui_device_excess_bar_off.png" type="Texture" id=12]
 
 [sub_resource type="DynamicFont" id=1]
 size = 5
@@ -24,16 +25,9 @@ font_data = ExtResource( 10 )
 
 [node name="device" type="Node2D"]
 script = ExtResource( 1 )
-eusage = null
-musage = null
-inEnergie = null
-inMatter = null
-ebufSize = null
-mbufSize = null
-timeToDead = null
-connected = null
 
 [node name="Button" type="Button" parent="."]
+visible = false
 margin_left = 72.0
 margin_top = 16.0
 margin_right = 154.0
@@ -44,6 +38,7 @@ __meta__ = {
 }
 
 [node name="Label5" type="Label" parent="."]
+visible = false
 margin_left = 72.0
 margin_top = 40.0
 margin_right = 117.0
@@ -55,16 +50,19 @@ __meta__ = {
 }
 
 [node name="connected" type="Label" parent="."]
+visible = false
 margin_left = 120.0
 margin_top = 40.0
 margin_right = 165.0
 margin_bottom = 48.0
 custom_fonts/font = SubResource( 1 )
+text = "false"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label6" type="Label" parent="."]
+visible = false
 margin_left = 72.0
 margin_top = 48.0
 margin_right = 117.0
@@ -76,16 +74,19 @@ __meta__ = {
 }
 
 [node name="inEnergie" type="Label" parent="."]
+visible = false
 margin_left = 120.0
 margin_top = 48.0
 margin_right = 165.0
 margin_bottom = 56.0
 custom_fonts/font = SubResource( 1 )
+text = "0"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label8" type="Label" parent="."]
+visible = false
 margin_left = 72.0
 margin_top = 56.0
 margin_right = 117.0
@@ -97,16 +98,19 @@ __meta__ = {
 }
 
 [node name="inMatter" type="Label" parent="."]
+visible = false
 margin_left = 120.0
 margin_top = 56.0
 margin_right = 165.0
 margin_bottom = 64.0
 custom_fonts/font = SubResource( 1 )
+text = "0"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="."]
+visible = false
 margin_left = 72.0
 margin_top = 64.0
 margin_right = 112.0
@@ -118,6 +122,7 @@ __meta__ = {
 }
 
 [node name="ebuf" type="Label" parent="."]
+visible = false
 margin_left = 120.0
 margin_top = 64.0
 margin_right = 165.0
@@ -128,6 +133,7 @@ __meta__ = {
 }
 
 [node name="Label2" type="Label" parent="."]
+visible = false
 margin_left = 72.0
 margin_top = 72.0
 margin_right = 112.0
@@ -139,6 +145,7 @@ __meta__ = {
 }
 
 [node name="mbuf" type="Label" parent="."]
+visible = false
 margin_left = 120.0
 margin_top = 72.0
 margin_right = 165.0
@@ -149,6 +156,7 @@ __meta__ = {
 }
 
 [node name="Label4" type="Label" parent="."]
+visible = false
 margin_left = 72.0
 margin_top = 80.0
 margin_right = 117.0
@@ -160,16 +168,19 @@ __meta__ = {
 }
 
 [node name="eusage" type="Label" parent="."]
+visible = false
 margin_left = 120.0
 margin_top = 80.0
 margin_right = 165.0
 margin_bottom = 88.0
 custom_fonts/font = SubResource( 1 )
+text = "0"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label9" type="Label" parent="."]
+visible = false
 margin_left = 72.0
 margin_top = 88.0
 margin_right = 117.0
@@ -181,16 +192,19 @@ __meta__ = {
 }
 
 [node name="musage" type="Label" parent="."]
+visible = false
 margin_left = 120.0
 margin_top = 88.0
 margin_right = 165.0
 margin_bottom = 96.0
 custom_fonts/font = SubResource( 1 )
+text = "0"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label7" type="Label" parent="."]
+visible = false
 margin_left = 72.0
 margin_top = 96.0
 margin_right = 112.0
@@ -202,11 +216,13 @@ __meta__ = {
 }
 
 [node name="timer" type="Label" parent="."]
+visible = false
 margin_left = 120.0
 margin_top = 96.0
 margin_right = 165.0
 margin_bottom = 104.0
 custom_fonts/font = SubResource( 1 )
+text = "95.616666"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -216,14 +232,23 @@ texture = ExtResource( 4 )
 centered = false
 
 [node name="ui_device_energy_bar" type="Sprite" parent="."]
+modulate = Color( 0.294118, 0.411765, 0.184314, 1 )
 texture = ExtResource( 8 )
 centered = false
 
 [node name="ui_device_excess_bar" type="Sprite" parent="."]
+modulate = Color( 0.294118, 0.411765, 0.184314, 1 )
 texture = ExtResource( 7 )
 centered = false
 
+[node name="ui_device_excess_bar_off" type="Sprite" parent="."]
+visible = false
+modulate = Color( 0.294118, 0.411765, 0.184314, 1 )
+texture = ExtResource( 12 )
+centered = false
+
 [node name="ui_device_name_tag" type="Sprite" parent="."]
+modulate = Color( 0.294118, 0.411765, 0.184314, 1 )
 texture = ExtResource( 6 )
 centered = false
 
@@ -239,7 +264,7 @@ centered = false
 
 [node name="ui_symbole_antim" type="Sprite" parent="."]
 visible = false
-position = Vector2( -155, -21 )
+position = Vector2( 29, 3 )
 texture = ExtResource( 5 )
 centered = false
 
@@ -250,7 +275,7 @@ margin_top = 19.0
 margin_right = 31.0
 margin_bottom = 27.0
 custom_fonts/font = SubResource( 2 )
-text = "warp"
+text = "device"
 __meta__ = {
 "_edit_use_anchors_": false
 }

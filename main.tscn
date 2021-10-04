@@ -23,15 +23,6 @@ position = Vector2( 1920, 664 )
 [node name="antiMatterControl" parent="." instance=ExtResource( 3 )]
 position = Vector2( 1992, 664 )
 
-[node name="device" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1608, 248 )
-scale = Vector2( 2, 2 )
-eusage = 0.2
-musage = -0.05
-ebufSize = 100.0
-mbufSize = -100.0
-timeToDead = 100.0
-
 [node name="powerHBar" parent="." instance=ExtResource( 5 )]
 position = Vector2( 1936, 576 )
 scale = Vector2( 2, 2 )
@@ -40,16 +31,24 @@ scale = Vector2( 2, 2 )
 position = Vector2( 1800, 512 )
 scale = Vector2( 2, 2 )
 
-[node name="device2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1936, 248 )
-scale = Vector2( 2, 2 )
-eusage = 0.2
-musage = 0.05
-ebufSize = 100.0
-mbufSize = 100.0
-timeToDead = 100.0
-
 [node name="ui_pcg_mac_monitor" type="Sprite" parent="."]
 position = Vector2( 170, 0 )
 texture = ExtResource( 7 )
 centered = false
+
+[node name="device" parent="." instance=ExtResource( 4 )]
+position = Vector2( 216, 16 )
+dname = "HOLO"
+eusage = 0.2
+musage = -0.05
+mbufSize = -100.0
+
+[node name="device2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 264, 16 )
+eusage = 0.2
+musage = 0.05
+
+[node name="device3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 312, 16 )
+dname = "PHAS"
+mbufSize = 0.0
