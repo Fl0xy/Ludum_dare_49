@@ -2,8 +2,9 @@ tool
 extends Node2D
 class_name Device
 
-const BAR_LENGTH: int  = 23
+const BAR_LENGTH: int  = 22
 
+export(bool) var top: bool = false setget changeTop
 export(String) var dname: String = "WARP" setget changeName
 export(float) var eusage: float = 0 setget changeEUsage
 export(float) var musage: float = 0 setget changeMUsage
@@ -25,14 +26,22 @@ signal feedbackloop()
 
 func _ready():
 	$Button.connect("pressed", self, "toggle")
+	$Area2D.connect("input_event", self, "area2DClickedHelper")
 	timer = timeToDead
 	
 	self.ebuf = self.ebufSize / 2
 	if (self.mbufSize != 0):
 		self.mbuf = self.mbufSize / 2
-	
-		
+
+func area2DClickedHelper(viewport, event, shape_idx):
+	if event is InputEventMouseButton && event.pressed:
+		toggle()
+
 func _physics_process(delta):
+	
+	if (!self.connected):
+		self.inEnergie = 0
+		self.inMatter = 0
 	
 	var damage: bool = false
 	
@@ -88,21 +97,23 @@ func changeConnected(newConnected: bool):
 		$ui_device_name_tag.modulate = Style.ON_COLOR
 		$ui_device_energy_bar.modulate = Style.ON_COLOR
 		$ui_device_excess_bar.modulate = Style.ON_COLOR
+		$ui_device_excess_bar_off.modulate = Style.ON_COLOR
 	else:
 		$connected.text = "false"
 		emit_signal("deviceDisconnect", self)
 		$ui_device_name_tag.modulate = Style.OFF_COLOR
 		$ui_device_energy_bar.modulate = Style.OFF_COLOR
 		$ui_device_excess_bar.modulate = Style.OFF_COLOR
+		$ui_device_excess_bar_off.modulate = Style.OFF_COLOR
 
 func changeEbuf(newEbuf: float):
 	ebuf = newEbuf
-	$enrBar.transform = Vector2((ebuf/self.ebufSize)*BAR_LENGTH, 3)
+	$enrBar.scale = Vector2(clamp((ebuf/self.ebufSize)*BAR_LENGTH, 0 , BAR_LENGTH), 3)
 	$ebuf.text = str(ebuf) + "/" + str(ebufSize)
 	
 func changeMbuf(newMbuf: float):
 	mbuf = newMbuf
-	$matBar.transform = Vector2(abs((ebuf/self.ebufSize)*BAR_LENGTH), 3)
+	$matBar.scale = Vector2(clamp(abs((mbuf/self.mbufSize)*BAR_LENGTH), 0 , BAR_LENGTH) , 3)
 	$mbuf.text = str(mbuf) + "/" + str(mbufSize)
 	
 func changeEUsage(newEUsage: float):
@@ -149,3 +160,33 @@ func changeMBufSize(newMBufSize):
 		$matBar.visible = false
 		$ui_device_excess_bar.visible = false
 		$ui_device_excess_bar_off.visible = true
+		
+func changeTop(newTop):
+	top = newTop
+	if(top):
+		$ui_device_border.scale = Vector2(1,-1)
+		$ui_device_energy_bar.scale = Vector2(1,-1)
+		$ui_device_excess_bar.scale = Vector2(1,-1)
+		$ui_device_excess_bar_off.scale = Vector2(1,-1)
+		$ui_device_name_tag.scale = Vector2(1,-1)
+		$Area2D.scale = Vector2(1,-1)
+		$name.rect_position = Vector2(6,-28)
+		$matBar.position = Vector2(5,-7)
+		$enrBar.position = Vector2(5,-13)
+		$ui_symbole_energy.position = Vector2(29, -14)
+		$ui_symbole_matter.position = Vector2(29,-8)
+		$ui_symbole_antim.position = Vector2(29,-8)
+	
+	else:
+		$ui_device_border.scale = Vector2(1,1)
+		$ui_device_energy_bar.scale = Vector2(1,1)
+		$ui_device_excess_bar.scale = Vector2(1,1)
+		$ui_device_excess_bar_off.scale = Vector2(1,1)
+		$ui_device_name_tag.scale = Vector2(1,1)
+		$Area2D.scale = Vector2(1,1)
+		$name.rect_position = Vector2(6,19)
+		$matBar.position = Vector2(5,4)
+		$enrBar.position = Vector2(5,10)
+		$ui_symbole_energy.position = Vector2(29,9)
+		$ui_symbole_matter.position = Vector2(29,3)
+		$ui_symbole_antim.position = Vector2(29,3)

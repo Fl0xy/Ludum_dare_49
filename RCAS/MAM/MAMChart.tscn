@@ -1,0 +1,90 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Sprites/ui_mam-pow-bar_border.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/ui_mam-pow-bar_mask.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/ui_mam-pow-tag_border.png" type="Texture" id=3]
+[ext_resource path="res://Fonts/Beef'd custom.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Sprites/ui_symbole_anti-m.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/ui_symbole_matter.png" type="Texture" id=6]
+[ext_resource path="res://white_pixel.png.png" type="Texture" id=7]
+[ext_resource path="res://RCAS/MAM/MAMChart.gd" type="Script" id=8]
+
+[sub_resource type="DynamicFont" id=1]
+size = 5
+extra_spacing_char = -1
+font_data = ExtResource( 4 )
+
+[node name="mamChart" type="Node2D"]
+script = ExtResource( 8 )
+
+[node name="bar" type="Sprite" parent="."]
+modulate = Color( 0.87451, 0.443137, 0.14902, 1 )
+position = Vector2( 7, 35 )
+scale = Vector2( 11, 1e-05 )
+texture = ExtResource( 7 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ui_mam-pow-bar_border" type="Sprite" parent="."]
+position = Vector2( 4, 9 )
+texture = ExtResource( 1 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ui_mam-pow-bar_mask" type="Sprite" parent="."]
+position = Vector2( 4, 9 )
+texture = ExtResource( 2 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ui_mam-pow-tag_border" type="Sprite" parent="."]
+modulate = Color( 0.67451, 0.196078, 0.196078, 1 )
+texture = ExtResource( 3 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Label" type="Label" parent="."]
+modulate = Color( 0.85098, 0.341176, 0.388235, 1 )
+margin_left = 3.0
+margin_right = 22.0
+margin_bottom = 8.0
+custom_fonts/font = SubResource( 1 )
+text = "MAM"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="ui_symbole_anti-m" type="Sprite" parent="."]
+position = Vector2( -1, 15 )
+texture = ExtResource( 5 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ui_symbole_matter" type="Sprite" parent="."]
+position = Vector2( -1, 49 )
+texture = ExtResource( 6 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ui_red_bar" type="Sprite" parent="."]
+modulate = Color( 0.67451, 0.196078, 0.196078, 1 )
+position = Vector2( 5, 35 )
+scale = Vector2( 15, 1 )
+texture = ExtResource( 7 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}

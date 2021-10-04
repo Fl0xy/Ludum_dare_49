@@ -1,6 +1,12 @@
 extends Node2D
 
+const DISPLAY_WIDTH = 84
+const DISPLAY_HIGHT = 14
+
 export(bool) var on: bool = true
+export(float) var matStoreSize: float
+export(float) var matStoreFullDamageTime: float
+var timer: float 
 
 ## device
 var devices = []
@@ -21,6 +27,7 @@ var inAntiMatterFlow: float setget changeInAntiMatterFlow
 var health: float setget changeHealth
 signal healthChanged(health)
 var matStore: float setget changeMatStore
+signal matStoreChanged(stored, maxStore)
 
 func _ready():
 	randomize()
@@ -74,6 +81,26 @@ func  _process(delta):
 			for device in self.antiMatterDevices:
 				device.changeInMatter(0)
 		
+		# mat store damage
+		if (self.timer <= 0):
+			health -= 0.1 # damage
+			self.timer = self.matStoreFullDamageTime
+		
+		if (matStore > matStoreSize):
+			self.timer -= delta # timer tick
+		else: # repair
+			if (self.timer < self.matStoreFullDamageTime):
+				self.timer += delta/2
+				
+		# Display
+		var g = self.inAntiMatterFlow + self.inMatterFlow
+		if (g != 0):
+			$antiMatterBar.scale = Vector2(clamp(-(DISPLAY_WIDTH/g*self.inAntiMatterFlow), -DISPLAY_WIDTH, 0), DISPLAY_HIGHT)
+			$matterBar.scale = Vector2(clamp(DISPLAY_WIDTH/g*self.inMatterFlow, 0, DISPLAY_WIDTH), DISPLAY_HIGHT)
+		else:
+			$antiMatterBar.scale = Vector2(0,DISPLAY_HIGHT)
+			$matterBar.scale = Vector2(0,DISPLAY_HIGHT)
+			
 
 func connectDevice(device: Device):
 	if (self.devices.has(device)):
@@ -113,5 +140,6 @@ func changeInAntiMatterFlow(newInAntiMatterFlow: float):
 	$inAmat.text = str(inAntiMatterFlow)
 	
 func changeMatStore(newMatStore: float):
-	matStore = newMatStore
+	matStore = clamp(newMatStore, -self.matStoreSize*1.01,self.matStoreSize*1.01) 
 	$storeMat.text = str(matStore)
+	emit_signal("matStoreChanged", matStore, matStoreSize)

@@ -128,6 +128,7 @@ margin_top = 64.0
 margin_right = 165.0
 margin_bottom = 72.0
 custom_fonts/font = SubResource( 1 )
+text = "0/100"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -151,6 +152,7 @@ margin_top = 72.0
 margin_right = 165.0
 margin_bottom = 80.0
 custom_fonts/font = SubResource( 1 )
+text = "0/100"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -222,7 +224,7 @@ margin_top = 96.0
 margin_right = 165.0
 margin_bottom = 104.0
 custom_fonts/font = SubResource( 1 )
-text = "95.616666"
+text = "16.233329"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -275,7 +277,7 @@ margin_top = 19.0
 margin_right = 31.0
 margin_bottom = 27.0
 custom_fonts/font = SubResource( 2 )
-text = "device"
+text = "WARP"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -283,13 +285,19 @@ __meta__ = {
 [node name="matBar" type="Sprite" parent="."]
 modulate = Color( 0.87451, 0.443137, 0.14902, 1 )
 position = Vector2( 5, 4 )
-scale = Vector2( 22, 3 )
+scale = Vector2( 1e-05, 3 )
 texture = ExtResource( 3 )
 centered = false
 
 [node name="enrBar" type="Sprite" parent="."]
 modulate = Color( 0.356863, 0.431373, 0.882353, 1 )
 position = Vector2( 5, 10 )
-scale = Vector2( 22, 3 )
+scale = Vector2( 1e-05, 3 )
 texture = ExtResource( 3 )
 centered = false
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+visible = false
+polygon = PoolVector2Array( 2.64891, 6.29017, 2.64891, 25.1677, 8.66611, 31.3618, 27.9565, 31.7158, 34.2097, 25.6986, 34.2687, 2.69165, 3.76977, 2.57367 )

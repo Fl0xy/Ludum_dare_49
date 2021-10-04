@@ -1,0 +1,174 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://Sprites/ui_generator_core_mat.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/ui_generator_stand.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/ui_mac_seg_7.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/ui_generator_core.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/ui_mac_seg_3.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/ui_mac_seg_2.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/ui_lane_connector.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/ui_mac_seg_5.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/ui_mac_seg_8.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/ui_mac_seg_0.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/ui_mac_short.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/ui_mac_seg_6.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/ui_mac_seg_4.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/ui_mac_seg_1_stay_safe.png" type="Texture" id=14]
+[ext_resource path="res://Sprites/ui_generator_big_power_lane.png" type="Texture" id=15]
+[ext_resource path="res://Sprites/ui_mac_long.png" type="Texture" id=16]
+[ext_resource path="res://Sprites/ui_generator_core_anti-m.png" type="Texture" id=17]
+[ext_resource path="res://Sprites/ui_generator_coil.png" type="Texture" id=18]
+[ext_resource path="res://RCAS/POW/POWChart.tscn" type="PackedScene" id=19]
+[ext_resource path="res://RCAS/MAM/MAMChart.tscn" type="PackedScene" id=20]
+[ext_resource path="res://RCAS/MACControls/MACControl.tscn" type="PackedScene" id=21]
+
+[node name="mac" type="Node2D"]
+
+[node name="ui_mac_long" type="Sprite" parent="."]
+texture = ExtResource( 16 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ui_generator_big_power_lane" type="Sprite" parent="."]
+position = Vector2( 147, 14 )
+texture = ExtResource( 15 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ui_generator_core" type="Sprite" parent="."]
+position = Vector2( 143, 78 )
+texture = ExtResource( 4 )
+centered = false
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="ui_generator_core_anti-m" type="Sprite" parent="ui_generator_core"]
+position = Vector2( -1, 0 )
+texture = ExtResource( 17 )
+centered = false
+
+[node name="ui_generator_core_mat" type="Sprite" parent="ui_generator_core"]
+position = Vector2( -1, 0 )
+texture = ExtResource( 1 )
+centered = false
+
+[node name="ui_generator_stand" type="Sprite" parent="."]
+position = Vector2( 144, 96 )
+texture = ExtResource( 2 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ui_lane_connector" type="Sprite" parent="."]
+position = Vector2( 167, 9 )
+texture = ExtResource( 7 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ui_mac_seg_0" type="Sprite" parent="."]
+texture = ExtResource( 10 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ui_mac_seg_1_stay_safe" type="Sprite" parent="."]
+texture = ExtResource( 14 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ui_mac_seg_2" type="Sprite" parent="."]
+texture = ExtResource( 6 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ui_mac_seg_3" type="Sprite" parent="."]
+texture = ExtResource( 5 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ui_mac_seg_4" type="Sprite" parent="."]
+texture = ExtResource( 13 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ui_mac_seg_5" type="Sprite" parent="."]
+texture = ExtResource( 8 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ui_mac_seg_6" type="Sprite" parent="."]
+texture = ExtResource( 12 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ui_mac_seg_7" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ui_mac_seg_8" type="Sprite" parent="."]
+texture = ExtResource( 9 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ui_mac_short" type="Sprite" parent="."]
+texture = ExtResource( 11 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ui_generator_coil" type="Sprite" parent="."]
+position = Vector2( 147, 67 )
+texture = ExtResource( 18 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ui_generator_coil2" type="Sprite" parent="."]
+position = Vector2( 147, 85 )
+texture = ExtResource( 18 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="powChart" parent="." instance=ExtResource( 19 )]
+position = Vector2( 165, 42 )
+
+[node name="mamChart" parent="." instance=ExtResource( 20 )]
+position = Vector2( 117, 42 )
+
+[node name="antiMatterControl" parent="." instance=ExtResource( 21 )]
+position = Vector2( 67, 44 )
+mode = 1
+
+[node name="matterControl" parent="." instance=ExtResource( 21 )]
+position = Vector2( 15, 44 )
