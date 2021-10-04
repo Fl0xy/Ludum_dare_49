@@ -224,7 +224,7 @@ margin_top = 96.0
 margin_right = 165.0
 margin_bottom = 104.0
 custom_fonts/font = SubResource( 1 )
-text = "15.683329"
+text = "57.883331"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -299,4 +299,5 @@ centered = false
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+visible = false
 polygon = PoolVector2Array( 2.64891, 6.29017, 2.64891, 25.1677, 8.66611, 31.3618, 27.9565, 31.7158, 34.2097, 25.6986, 34.2687, 2.69165, 3.76977, 2.57367 )

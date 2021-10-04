@@ -82,6 +82,7 @@ number = 1
 position = Vector2( 23.5542, 29.1052 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ui_dial_seg_1/Area2D"]
+visible = false
 polygon = PoolVector2Array( -4.15308, 0.866974, -9.60983, 8.80154, -6.23089, 10.9622, -2.53194, 10.9388, -0.533798, 7.8828, -0.533798, 3.92944, -2.53832, 0.894814 )
 
 [node name="ui_dial_seg_2" type="Sprite" parent="."]
@@ -97,6 +98,7 @@ number = 2
 position = Vector2( 23.5542, 29.1052 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ui_dial_seg_2/Area2D"]
+visible = false
 polygon = PoolVector2Array( -6.99263, -2.1142, -15.6791, 2.37037, -10.3615, 8.10553, -6.85342, 3.67664, -4.45914, 0.474972 )
 
 [node name="ui_dial_seg_3" type="Sprite" parent="."]
@@ -112,6 +114,7 @@ number = 3
 position = Vector2( 23.5542, 29.1052 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ui_dial_seg_3/Area2D"]
+visible = false
 polygon = PoolVector2Array( -7.57747, -5.06307, -7.5216, -2.50397, -16.4027, 0.976105, -17.6558, -5.09091 )
 
 [node name="ui_dial_seg_4" type="Sprite" parent="."]
@@ -126,6 +129,7 @@ number = 4
 [node name="Area2D" type="Area2D" parent="ui_dial_seg_4"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ui_dial_seg_4/Area2D"]
+visible = false
 polygon = PoolVector2Array( 7.02541, 16.7939, 6.03125, 22.9062, 16.0625, 22.9375, 16, 20.0625 )
 
 [node name="ui_dial_seg_5" type="Sprite" parent="."]
@@ -140,6 +144,7 @@ number = 5
 [node name="Area2D" type="Area2D" parent="ui_dial_seg_5"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ui_dial_seg_5/Area2D"]
+visible = false
 polygon = PoolVector2Array( 7.95432, 15.3385, 16.9124, 19.9687, 19.3005, 16.9862, 13.4579, 8.92706 )
 
 [node name="ui_dial_seg_6" type="Sprite" parent="."]
@@ -154,6 +159,7 @@ number = 6
 [node name="Area2D" type="Area2D" parent="ui_dial_seg_6"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ui_dial_seg_6/Area2D"]
+visible = false
 polygon = PoolVector2Array( 14.9544, 8.51011, 20.0809, 16.8849, 22.9536, 15.8905, 23.0198, 5.96894, 18.9688, 6.125 )
 
 [node name="ui_dial_seg_7" type="Sprite" parent="."]
@@ -168,6 +174,7 @@ number = 7
 [node name="Area2D" type="Area2D" parent="ui_dial_seg_7"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ui_dial_seg_7/Area2D"]
+visible = false
 polygon = PoolVector2Array( 24, 6, 24.125, 15.8125, 26.7812, 16.8438, 30.9688, 8.03125, 27.0625, 6.09375 )
 
 [node name="ui_dial_seg_8" type="Sprite" parent="."]
@@ -182,6 +189,7 @@ number = 8
 [node name="Area2D" type="Area2D" parent="ui_dial_seg_8"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ui_dial_seg_8/Area2D"]
+visible = false
 polygon = PoolVector2Array( 27.9688, 17.5938, 31.4688, 9, 33.9062, 8.90625, 38.2188, 14, 30.3125, 19.0312 )
 
 [node name="ui_dial_seg_9" type="Sprite" parent="."]
@@ -196,6 +204,7 @@ number = 9
 [node name="Area2D" type="Area2D" parent="ui_dial_seg_9"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ui_dial_seg_9/Area2D"]
+visible = false
 polygon = PoolVector2Array( 30.2188, 20.0938, 31.125, 22.8438, 41.0312, 22.875, 40.8438, 19.0625, 38.2188, 15.9062 )
 
 [node name="ui_dial_seg_10" type="Sprite" parent="."]
@@ -210,6 +219,7 @@ number = 10
 [node name="Area2D" type="Area2D" parent="ui_dial_seg_10"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ui_dial_seg_10/Area2D"]
+visible = false
 position = Vector2( -0.533516, -0.357277 )
 polygon = PoolVector2Array( 41.5023, 24.3729, 41.5491, 28.2792, 39.4241, 31.451, 30.5491, 27.1073, 31.6429, 24.3729 )
 
@@ -225,6 +235,7 @@ number = 11
 [node name="Area2D" type="Area2D" parent="ui_dial_seg_11"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ui_dial_seg_11/Area2D"]
+visible = false
 position = Vector2( -0.533516, -0.357277 )
 polygon = PoolVector2Array( 30.0804, 27.8573, 38.6429, 32.4667, 36.4866, 36.3104, 31.6273, 36.4042, 28.4554, 31.7323 )
 

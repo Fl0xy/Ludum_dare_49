@@ -4,6 +4,7 @@ class_name Device
 
 const BAR_LENGTH: int  = 22
 
+export(bool) var top: bool = false setget changeTop
 export(String) var dname: String = "WARP" setget changeName
 export(float) var eusage: float = 0 setget changeEUsage
 export(float) var musage: float = 0 setget changeMUsage
@@ -157,3 +158,30 @@ func changeMBufSize(newMBufSize):
 		$matBar.visible = false
 		$ui_device_excess_bar.visible = false
 		$ui_device_excess_bar_off.visible = true
+		
+func changeTop(newTop):
+	top = newTop
+	if(top):
+		$ui_device_border.scale = Vector2(1,-1)
+		$ui_device_energy_bar.scale = Vector2(1,-1)
+		$ui_device_excess_bar.scale = Vector2(1,-1)
+		$ui_device_excess_bar_off.scale = Vector2(1,-1)
+		$ui_device_name_tag.scale = Vector2(1,-1)
+		$name.rect_position = Vector2(6,-28)
+		$matBar.position = Vector2(5,-7)
+		$enrBar.position = Vector2(5,-13)
+		$ui_symbole_energy.position = Vector2(29, -14)
+		$ui_symbole_matter.position = Vector2(29,-8)
+		$ui_symbole_antim.position = Vector2(29,-8)
+	else:
+		$ui_device_border.scale = Vector2(1,1)
+		$ui_device_energy_bar.scale = Vector2(1,1)
+		$ui_device_excess_bar.scale = Vector2(1,1)
+		$ui_device_excess_bar_off.scale = Vector2(1,1)
+		$ui_device_name_tag.scale = Vector2(1,1)
+		$name.rect_position = Vector2(6,19)
+		$matBar.position = Vector2(5,4)
+		$enrBar.position = Vector2(5,10)
+		$ui_symbole_energy.position = Vector2(29,9)
+		$ui_symbole_matter.position = Vector2(29,3)
+		$ui_symbole_antim.position = Vector2(29,3)
