@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ui_device_name_tag.png-7bb191ee7722fef6843586a4dcc3d812.stex"
+path="res://.import/ui_lane_1.png-655832d2f84b0962654621e51e041281.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/ui_device_name_tag.png"
-dest_files=[ "res://.import/ui_device_name_tag.png-7bb191ee7722fef6843586a4dcc3d812.stex" ]
+source_file="res://Sprites/ui_lane_1.png"
+dest_files=[ "res://.import/ui_lane_1.png-655832d2f84b0962654621e51e041281.stex" ]
 
 [params]
 
