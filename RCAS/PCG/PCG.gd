@@ -24,8 +24,71 @@ func _ready():
 	$holo.connect("feedbackloop", self, "holo_feedback")
 	$torp.connect("feedbackloop", self, "torp_feedback")
 	$tnsp.connect("feedbackloop", self, "tnsp_feedback")
+	
+	$warp.connect("deviceConnect", self, "connect_lane_5")
+	$impl.connect("deviceConnect", self, "connect_lane_6")
+	$phsr.connect("deviceConnect", self, "connect_lane_7")
+	$snsr.connect("deviceConnect", self, "connect_lane_8")
+	$dflc.connect("deviceConnect", self, "connect_lane_9")
+	$shld.connect("deviceConnect", self, "connect_lane_4")
+	$holo.connect("deviceConnect", self, "connect_lane_3")
+	$torp.connect("deviceConnect", self, "connect_lane_2")
+	$tnsp.connect("deviceConnect", self, "connect_lane_1")
+	
+	$warp.connect("deviceDisconnect", self, "disconnect_lane_5")
+	$impl.connect("deviceDisconnect", self, "disconnect_lane_6")
+	$phsr.connect("deviceDisconnect", self, "disconnect_lane_7")
+	$snsr.connect("deviceDisconnect", self, "disconnect_lane_8")
+	$dflc.connect("deviceDisconnect", self, "disconnect_lane_9")
+	$shld.connect("deviceDisconnect", self, "disconnect_lane_4")
+	$holo.connect("deviceDisconnect", self, "disconnect_lane_3")
+	$torp.connect("deviceDisconnect", self, "disconnect_lane_2")
+	$tnsp.connect("deviceDisconnect", self, "disconnect_lane_1")
 
 	# debug()
+
+
+func connect_lane_5(device):
+	$ui_lane_5_mask.modulate = Style.ON_COLOR
+func connect_lane_6(device):
+	$ui_lane_6_mask.modulate = Style.ON_COLOR
+func connect_lane_7(device):
+	$ui_lane_7_mask.modulate = Style.ON_COLOR
+func connect_lane_8(device):
+	$ui_lane_8_mask.modulate = Style.ON_COLOR
+func connect_lane_9(device):
+	$ui_lane_9_mask.modulate = Style.ON_COLOR
+func connect_lane_4(device):
+	$ui_lane_4_mask.modulate = Style.ON_COLOR
+func connect_lane_3(device):
+	$ui_lane_3_mask.modulate = Style.ON_COLOR
+func connect_lane_2(device):
+	$ui_lane_2_mask.modulate = Style.ON_COLOR
+func connect_lane_1(device):
+	$ui_lane_1_mask.modulate = Style.ON_COLOR
+
+
+func disconnect_lane_5(device):
+	$ui_lane_5_mask.modulate = Style.OFF_COLOR
+func disconnect_lane_6(device):
+	$ui_lane_6_mask.modulate = Style.OFF_COLOR
+func disconnect_lane_7(device):
+	$ui_lane_7_mask.modulate = Style.OFF_COLOR
+func disconnect_lane_8(device):
+	$ui_lane_8_mask.modulate = Style.OFF_COLOR
+func disconnect_lane_9(device):
+	$ui_lane_9_mask.modulate = Style.OFF_COLOR
+func disconnect_lane_4(device):
+	$ui_lane_4_mask.modulate = Style.OFF_COLOR
+func disconnect_lane_3(device):
+	$ui_lane_3_mask.modulate = Style.OFF_COLOR
+func disconnect_lane_2(device):
+	$ui_lane_2_mask.modulate = Style.OFF_COLOR
+func disconnect_lane_1(device):
+	$ui_lane_1_mask.modulate = Style.OFF_COLOR
+
+
+
 
 func debug():
 	warp_feedback()
