@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Components/WarpCore/WarpCore.tscn" type="PackedScene" id=1]
 [ext_resource path="res://main.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Components/Device/Device.tscn" type="PackedScene" id=4]
 [ext_resource path="res://RCAS/HBar/HBar.tscn" type="PackedScene" id=5]
 [ext_resource path="res://RCAS/PlasmaMix/PlasmaMix.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Sprites/ui_pcg_mac_monitor.png" type="Texture" id=7]
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 2 )
@@ -14,16 +15,16 @@ __meta__ = {
 }
 
 [node name="warpCore" parent="." instance=ExtResource( 1 )]
-position = Vector2( 56, 48 )
+position = Vector2( 14, 0 )
 
 [node name="matterControl" parent="." instance=ExtResource( 3 )]
-position = Vector2( 640, 472 )
+position = Vector2( 1920, 664 )
 
 [node name="antiMatterControl" parent="." instance=ExtResource( 3 )]
-position = Vector2( 712, 472 )
+position = Vector2( 1992, 664 )
 
 [node name="device" parent="." instance=ExtResource( 4 )]
-position = Vector2( 328, 56 )
+position = Vector2( 1608, 248 )
 scale = Vector2( 2, 2 )
 eusage = 0.2
 musage = -0.05
@@ -32,18 +33,23 @@ mbufSize = -100.0
 timeToDead = 100.0
 
 [node name="powerHBar" parent="." instance=ExtResource( 5 )]
-position = Vector2( 656, 384 )
+position = Vector2( 1936, 576 )
 scale = Vector2( 2, 2 )
 
 [node name="plasmaMix" parent="." instance=ExtResource( 6 )]
-position = Vector2( 520, 320 )
+position = Vector2( 1800, 512 )
 scale = Vector2( 2, 2 )
 
 [node name="device2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 656, 56 )
+position = Vector2( 1936, 248 )
 scale = Vector2( 2, 2 )
 eusage = 0.2
 musage = 0.05
 ebufSize = 100.0
 mbufSize = 100.0
 timeToDead = 100.0
+
+[node name="ui_pcg_mac_monitor" type="Sprite" parent="."]
+position = Vector2( 170, 0 )
+texture = ExtResource( 7 )
+centered = false
