@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Sprites/ces_eject-button_big_arrow.png" type="Texture" id=1]
 [ext_resource path="res://Sprites/ces_eject-button_small-arrow_0.png" type="Texture" id=2]
@@ -22,11 +22,10 @@
 [ext_resource path="res://RCAS/CES/EjectionButton.gd" type="Script" id=20]
 [ext_resource path="res://RCAS/CES/CESButton.gd" type="Script" id=21]
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=1]
 resource_name = "down"
 
-[sub_resource type="Animation" id=1]
-resource_name = "move_down"
+[sub_resource type="Animation" id=2]
 tracks/0/type = "value"
 tracks/0/path = NodePath("ces_monitor:position")
 tracks/0/interp = 1
@@ -40,8 +39,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 94 ) ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "move_up"
+[sub_resource type="Animation" id=3]
 tracks/0/type = "value"
 tracks/0/path = NodePath("ces_monitor:position")
 tracks/0/interp = 1
@@ -56,7 +54,9 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=4]
-resource_name = "up"
+resource_name = "panic"
+
+[sub_resource type="Animation" id=5]
 
 [node name="CES" type="Node2D"]
 position = Vector2( 0, 105 )
@@ -234,7 +234,8 @@ centered = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_speed = 2.0
-anims/down = SubResource( 3 )
-anims/move_down = SubResource( 1 )
-anims/move_up = SubResource( 2 )
-anims/up = SubResource( 4 )
+anims/down = SubResource( 1 )
+anims/move_down = SubResource( 2 )
+anims/move_up = SubResource( 3 )
+anims/panic = SubResource( 4 )
+anims/up = SubResource( 5 )
