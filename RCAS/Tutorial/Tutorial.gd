@@ -14,6 +14,8 @@ func _ready():
 		get_tree().paused = true
 		one = true
 		timer = delay
+	else:
+		call_deferred("emit_signal", "done")
 
 func _physics_process(delta):
 	

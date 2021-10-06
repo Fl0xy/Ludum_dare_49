@@ -36,3 +36,4 @@ position = Vector2( 36, 121 )
 
 [node name="tutorial" parent="." instance=ExtResource( 5 )]
 pause_mode = 2
+enable = false
