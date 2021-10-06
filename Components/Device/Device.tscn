@@ -38,12 +38,10 @@ __meta__ = {
 [node name="ebar" parent="." instance=ExtResource( 2 )]
 position = Vector2( 3, 9 )
 mode = 0
-value = 0.0
 
 [node name="mbar" parent="." instance=ExtResource( 2 )]
 position = Vector2( 3, 3 )
 mode = 1
-value = 0.0
 
 [node name="Area2D" type="Area2D" parent="."]
 

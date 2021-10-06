@@ -7,35 +7,49 @@ const BARHEIGHT = 3
 enum modeState {energy, matter, anitmatter, off}
 export(modeState) var mode = modeState.off setget setMode
 export(bool) var on = false setget setOn
-export(bool) var blink = false setget setBlink
-export(float) var blink_time = 1
+export(float) var blink_time_slow = 1
+export(float) var blink_time_fast = 0.5
 export(float) var value = 50 setget setValue
 export(float) var maxValue = 100
 export(bool) var rotate = false setget setRotate
 var blink_timer
-var blink_state = true
+var blink: = false
+var blink_fast = false
+var blink_state = false
 
 func _ready():
-	blink_timer = blink_time
+	pass
 
 func _physics_process(delta):
-	if (on && blink):
+	if (blink):
 		if (blink_timer <= 0):
 			if (blink_state):
-				$ui_device_energy_bar.modulate = Style.RED_COLOR
-				$ui_device_excess_bar.modulate = Style.RED_COLOR
-				blink_state = true
-				blink_timer = blink_time
-			else:
-				$ui_device_energy_bar.modulate = Style.ON_COLOR
-				$ui_device_excess_bar.modulate = Style.ON_COLOR
+				$ui_device_energy_bar.modulate = Style.DARKRED_COLOR
+				$ui_device_excess_bar.modulate = Style.DARKRED_COLOR
 				blink_state = false
-				blink_timer = blink_time
+			else:
+				if (on):
+					$ui_device_energy_bar.modulate = Style.ON_COLOR
+					$ui_device_excess_bar.modulate = Style.ON_COLOR
+				else:
+					$ui_device_energy_bar.modulate = Style.OFF_COLOR
+					$ui_device_excess_bar.modulate = Style.OFF_COLOR
+				blink_state = true
+				
+			if (blink_fast):
+				blink_timer = blink_time_fast
+			else:
+				blink_timer = blink_time_slow
+		else:
+			blink_timer -= delta
 	
 	
 func reset_blink():
 	blink_state = true
-	blink_timer = blink_time
+	if (blink_fast):
+		blink_timer = blink_time_fast
+	else:
+		blink_timer = blink_time_slow
 
 func setMode(newMode):
 	mode = newMode
@@ -91,7 +105,16 @@ func setOn(newOn):
 
 func setValue(newValue):
 	value = newValue
-	$bar.scale = Vector2(clamp((BARLENGTH/maxValue)*value ,0,BARLENGTH), BARHEIGHT)
+	var fill: float = value/maxValue
+	$bar.scale = Vector2(clamp(BARLENGTH*fill, 0, BARLENGTH), BARHEIGHT)
+	if (fill <= 0.2 || fill >= 0.8):
+		self.blink = true
+		if (fill <= 0.1 || fill >= 0.9):
+			self.blink_fast = true
+		else:
+			self.blink_fast = false
+	else:
+		self.blink = false
 
 func setBlink(newBlink):
 	blink = newBlink
