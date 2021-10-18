@@ -113,9 +113,17 @@ func changeMbuf(newMbuf: float):
 	
 func changeEUsage(newEUsage: float):
 	eusage = newEUsage
+	if (eusage != 0):
+		$ebar.discarge = true
+	else:
+		$ebar.discarge = false
 	
 func changeMUsage(newMUsage: float):
 	musage = newMUsage
+	if (musage != 0):
+		$mbar.discarge = true
+	else:
+		$mbar.discarge = false
 	
 func changeInEnergie(newInEnergie: float):
 	inEnergie = newInEnergie
