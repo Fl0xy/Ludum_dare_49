@@ -117,6 +117,8 @@ func disconnectDevice(device: Device):
 	self.matterDevices.erase(device)
 
 func changeHealth(newHealth: float):
+	if newHealth < health:
+		$AnimationPlayer.play("reactor_gets_damaged")
 	health = newHealth
 	emit_signal("healthChanged", health)
 	$health.text = str(health)

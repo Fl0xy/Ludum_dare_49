@@ -23,6 +23,10 @@ var shld_job: bool = false
 var phase: int = 0 setget setPhase
 var rng = RandomNumberGenerator.new()
 
+export var time_for_completing_core_ejection: float = 0.0
+var core_ejected: bool = false
+
+
 func _ready():
 	rng.randomize()
 	
@@ -63,7 +67,48 @@ func _ready():
 	
 	$tutorial.connect("done", self, "startPhaseOne")
 	
+	# WARP CORE EJECTION
+	$warpCore.connect("healthChanged", self, "testForAndInitateCoreEjectionProcedureIfNeeded")
+	#$CES.connect("eject_core", self, )
+
+export var screen_shake_duration = 1.0
+var remaining_screen_shake_time = 0
+var shake_strength
+
+func shake_screen():
+	remaining_screen_shake_time = screen_shake_duration
+
+func testForAndInitateCoreEjectionProcedureIfNeeded(coreHealth):
+	print(coreHealth)
+	shake_strength = 10 * min((1 - coreHealth), 1)
+	shake_screen()
 	
+	if coreHealth <= 0: # then the core cannot be recovered, it has to be ejected
+		get_tree().create_timer(time_for_completing_core_ejection).connect("timeout", self, "handleCoreEjectionTimeout")
+
+
+func handleCoreEjectionTimeout():
+	# TODO:
+	# start timer for core explosion : gameover
+	# make the toggle button of the CES flash red!
+	# make the reactor flash red
+	
+	if !core_ejected:
+		print("core exploded")
+	else:
+		print("core exploded safely outside the ship")
+
+
+func _process(delta):
+	if remaining_screen_shake_time > 0:
+		remaining_screen_shake_time -= delta
+		position.x = shake_strength * (posmod(randi(),3) - 1)
+		position.y = shake_strength * (posmod(randi(),3) - 1)
+		
+	else:
+		position.x = 0
+		position.y = 0
+
 func _physics_process(delta):
 	if (phase >= 1): #phase 1
 		if (!phase_one_job):
