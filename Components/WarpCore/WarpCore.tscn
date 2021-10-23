@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Sprites/reactor_metal_rods.png" type="Texture" id=1]
 [ext_resource path="res://Components/WarpCore/WarpCore.gd" type="Script" id=2]
@@ -8,7 +8,7 @@
 [ext_resource path="res://white_pixel.png.png" type="Texture" id=6]
 [ext_resource path="res://Sprites/reactor_plasma_ring_segment_mask.png" type="Texture" id=7]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "plasma_pulsing"
 loop = true
 tracks/0/type = "value"
@@ -60,8 +60,7 @@ tracks/3/keys = {
 "values": [ Color( 1, 1, 1, 0.498039 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.498039 ) ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "plasma_ring"
+[sub_resource type="Animation" id=2]
 length = 8.0
 loop = true
 tracks/0/type = "value"
@@ -149,6 +148,22 @@ tracks/6/keys = {
 "values": [ true, false, true ]
 }
 
+[sub_resource type="Animation" id=3]
+resource_name = "reactor_gets_damaged"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.5 ),
+"transitions": PoolRealArray( 0.0693482, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
 [node name="warpCore" type="Node2D"]
 script = ExtResource( 2 )
 
@@ -227,28 +242,28 @@ centered = false
 [node name="reactor_plasma_ring_segment_mask" type="Sprite" parent="PlasmaGlow"]
 visible = false
 modulate = Color( 1, 1, 1, 0.603922 )
-self_modulate = Color( 1, 1, 1, 0.74902 )
+self_modulate = Color( 1, 1, 1, 0.498039 )
 position = Vector2( 19, -28 )
 texture = ExtResource( 7 )
 centered = false
 
 [node name="reactor_plasma_ring_segment_mask2" type="Sprite" parent="PlasmaGlow"]
 modulate = Color( 1, 1, 1, 0.603922 )
-self_modulate = Color( 1, 1, 1, 0.74902 )
+self_modulate = Color( 1, 1, 1, 0.498039 )
 position = Vector2( 19, 211 )
 texture = ExtResource( 7 )
 centered = false
 
 [node name="reactor_plasma_ring_segment_mask3" type="Sprite" parent="PlasmaGlow"]
 modulate = Color( 1, 1, 1, 0.603922 )
-self_modulate = Color( 1, 1, 1, 0.74902 )
+self_modulate = Color( 1, 1, 1, 0.498039 )
 position = Vector2( 19, 155 )
 texture = ExtResource( 7 )
 centered = false
 
 [node name="reactor_plasma_ring_segment_mask4" type="Sprite" parent="PlasmaGlow"]
 modulate = Color( 1, 1, 1, 0.603922 )
-self_modulate = Color( 1, 1, 1, 0.74902 )
+self_modulate = Color( 1, 1, 1, 0.498039 )
 position = Vector2( 19, 28 )
 texture = ExtResource( 7 )
 centered = false
@@ -256,12 +271,12 @@ centered = false
 [node name="AnimationPlayer_PlasmaRingPulsing" type="AnimationPlayer" parent="PlasmaGlow"]
 autoplay = "plasma_pulsing"
 playback_speed = 5.0
-anims/plasma_pulsing = SubResource( 2 )
+anims/plasma_pulsing = SubResource( 1 )
 
 [node name="AnimationPlayer_PlasmaRingMovement" type="AnimationPlayer" parent="PlasmaGlow"]
 autoplay = "plasma_ring"
 playback_speed = 5.0
-anims/plasma_ring = SubResource( 1 )
+anims/plasma_ring = SubResource( 2 )
 
 [node name="reactor_middlesection_bg" type="Sprite" parent="."]
 texture = ExtResource( 5 )
@@ -414,3 +429,6 @@ margin_bottom = 222.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/reactor_gets_damaged = SubResource( 3 )

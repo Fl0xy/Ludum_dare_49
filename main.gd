@@ -1,5 +1,10 @@
 extends Node2D
 
+signal core_ejected(play_time)
+signal core_exploded(play_time)
+
+var play_time: float = 0.0
+
 var phase_one_job: bool = false
 var phase_one_timer: SceneTreeTimer
 
@@ -22,6 +27,10 @@ var shld_timer: SceneTreeTimer
 var shld_job: bool = false
 var phase: int = 0 setget setPhase
 var rng = RandomNumberGenerator.new()
+
+export var time_for_completing_core_ejection: float = 0.0
+var core_ejected: bool = false
+
 
 func _ready():
 	rng.randomize()
@@ -63,7 +72,76 @@ func _ready():
 	
 	$tutorial.connect("done", self, "startPhaseOne")
 	
+	# WARP CORE EJECTION
+	$warpCore.connect("healthChanged", self, "testForAndInitateCoreEjectionProcedureIfNeeded")
+	$CES.connect("eject_core", self, "start_core_ejection")
+
+export var screen_shake_duration = 1.0
+var remaining_screen_shake_time = 0
+var shake_strength
+
+func start_core_ejection():
+	emit_signal("core_ejected", play_time)
+	
+	core_ejected = true
+	$warpCore/AnimationPlayer_Ejector.play("EjectCore")
+	
+	# turn off all devices
+	$mmonitor/pcg/phsr.visible = false
+	$mmonitor/pcg/shld.visible = false
+	$mmonitor/pcg/torp.visible = false
+	$mmonitor/pcg/holo.visible = false
+	$mmonitor/pcg/snsr.visible = false
+	$mmonitor/pcg/tnsp.visible = false
+	$mmonitor/pcg/warp.visible = false
+	$mmonitor/pcg/impl.visible = false
+	$mmonitor/pcg/dflc.visible = false
+	
+	# turn off mac controller / ui
+	$mmonitor/mac/antiMatterControl.visible = false
+	$mmonitor/mac/matterControl.visible = false
+	$mmonitor/mac/powChart/bar.visible = false
+	$mmonitor/mac/mamChart/bar.visible = false
+
+func shake_screen():
+	remaining_screen_shake_time = screen_shake_duration
+
+func testForAndInitateCoreEjectionProcedureIfNeeded(coreHealth):
+	print(coreHealth)
+	shake_strength = 10 * min((1 - coreHealth), 1)
+	shake_screen()
+	
+	var coreInstable = coreHealth < 0.1 # actual test: coreHealth <= 0; but there is float weirdness probably
+	if coreInstable: # then the core cannot be recovered, it has to be ejected
+		get_tree().create_timer(time_for_completing_core_ejection).connect("timeout", self, "handleCoreEjectionTimeout")
+
+
+func handleCoreEjectionTimeout():
+	# TODO:
+	# start timer for core explosion : gameover
+	# make the toggle button of the CES flash red!
+	# make the reactor flash red
+	
+	if !core_ejected:
+		print("core exploded")
+		emit_signal("core_exploded", play_time)
+	else:
+		print("core exploded safely outside the ship")
+
+
+func _process(delta):
+	if remaining_screen_shake_time > 0:
+		remaining_screen_shake_time -= delta
+		position.x = shake_strength * (posmod(randi(),3) - 1)
+		position.y = shake_strength * (posmod(randi(),3) - 1)
+		
+	else:
+		position.x = 0
+		position.y = 0
+
 func _physics_process(delta):
+	play_time += delta # accumulates the time how long the player survived
+	
 	if (phase >= 1): #phase 1
 		if (!phase_one_job):
 			var j = rng.randi() % 2
