@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/tng_phaser4_clean_top-4.ogg-622bdd6d044672baad74c3886186a572.oggstr"
+
+[deps]
+
+source_file="res://Sounds/phaser_data/tng_phaser4_clean_top-4.ogg"
+dest_files=[ "res://.import/tng_phaser4_clean_top-4.ogg-622bdd6d044672baad74c3886186a572.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

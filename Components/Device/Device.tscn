@@ -27,7 +27,7 @@ centered = false
 modulate = Color( 0, 0, 0, 1 )
 margin_left = 6.0
 margin_top = 19.0
-margin_right = 31.0
+margin_right = 49.0
 margin_bottom = 27.0
 custom_fonts/font = SubResource( 1 )
 text = "WARP"
@@ -38,18 +38,21 @@ __meta__ = {
 [node name="ebar" parent="." instance=ExtResource( 2 )]
 position = Vector2( 3, 9 )
 mode = 0
-on = false
 value = 0.0
-discarge = false
 
 [node name="mbar" parent="." instance=ExtResource( 2 )]
 position = Vector2( 3, 3 )
-on = false
+mode = 1
 value = 0.0
-discarge = false
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
 visible = false
 polygon = PoolVector2Array( 2.64891, 6.29017, 2.64891, 25.1677, 8.66611, 31.3618, 27.9565, 31.7158, 34.2097, 25.6986, 34.2687, 2.69165, 3.76977, 2.57367 )
+
+[node name="soundPowerStart" type="AudioStreamPlayer" parent="."]
+
+[node name="soundPowerSustain" type="AudioStreamPlayer" parent="."]
+
+[node name="soundPowerEnd" type="AudioStreamPlayer" parent="."]

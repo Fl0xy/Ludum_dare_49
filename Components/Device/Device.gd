@@ -14,6 +14,9 @@ export(float) var ebufSize: float = 100 setget changeEBufSize
 export(float) var mbufSize: float = 100 setget changeMBufSize
 export(float) var timeToDead: float = 100
 export(bool) var connected: bool = false setget changeConnected
+export(Resource) var powerStartSound: Resource setget setPowerStartSound
+export(Resource) var powerSustainSound: Resource setget setPowerSustainSound
+export(Resource) var powerEndSound: Resource setget setPowerEndSound
 
 var timer: float setget changeTimer
 var ebuf: float setget changeEbuf
@@ -27,6 +30,7 @@ signal feedbackloop()
 func _ready():
 	$Area2D.connect("input_event", self, "area2DClickedHelper")
 	timer = timeToDead
+	$soundPowerStart.connect("finished", self, "startSoundFinished")
 	
 	self.ebuf = self.ebufSize / 2
 	if (self.mbufSize != 0):
@@ -112,6 +116,13 @@ func changeMbuf(newMbuf: float):
 	$mbar.value = abs(mbuf)
 	
 func changeEUsage(newEUsage: float):
+	# sound
+	if (eusage == 0 && newEUsage > 0):
+		$soundPowerStart.play(0)
+	elif(eusage > 0 && newEUsage == 0):
+		$soundPowerSustain.stop()
+		$soundPowerEnd.play(0)
+	# values
 	eusage = newEUsage
 	if (eusage != 0):
 		$ebar.discarge = true
@@ -171,3 +182,19 @@ func changeTop(newTop):
 		$ebar.position = Vector2(3, 9)
 		$mbar.position = Vector2(3, 3)
 		$mbar.rotate = false
+
+func setPowerStartSound(newPowerStartSound):
+	powerStartSound = newPowerStartSound
+	$soundPowerStart.stream = powerStartSound
+	
+func setPowerSustainSound(newPowerSustainSound):
+	powerSustainSound = newPowerSustainSound
+	$soundPowerSustain.stream = powerSustainSound
+	
+func setPowerEndSound(newPowerEndSound):
+	powerEndSound = newPowerEndSound
+	$soundPowerEnd.stream = powerEndSound
+	
+func startSoundFinished():
+	if (self.eusage > 0):
+		$soundPowerSustain.play(0)

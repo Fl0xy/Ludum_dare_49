@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/tng_phaser4_clean_top.mp3-3b1938fef04d4deb2dd1d4a1c9cbd1a8.mp3str"
+
+[deps]
+
+source_file="res://Sounds/original/tng_phaser4_clean_top.mp3"
+dest_files=[ "res://.import/tng_phaser4_clean_top.mp3-3b1938fef04d4deb2dd1d4a1c9cbd1a8.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

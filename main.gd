@@ -63,7 +63,6 @@ func _ready():
 	
 	$tutorial.connect("done", self, "startPhaseOne")
 	
-	
 func _physics_process(delta):
 	if (phase >= 1): #phase 1
 		if (!phase_one_job):
@@ -132,17 +131,18 @@ func _physics_process(delta):
 				if ($mmonitor/pcg/phsr.eusage == 1): # is shooting -> turn off
 					$mmonitor/pcg/phsr.eusage = 0
 					$mmonitor/pcg/phsr.musage = 0
-					self.phsr_timer = get_tree().create_timer(rng.randf_range(2,3))
+					self.phsr_timer = get_tree().create_timer(rng.randf_range(3,5))
 				else: # is not shooting -> turn on
 					$mmonitor/pcg/phsr.eusage = 1
 					$mmonitor/pcg/phsr.musage = -1
-					self.phsr_timer = get_tree().create_timer(rng.randf_range(0.5,1))
+					phsr_burst -= 1
+					self.phsr_timer = get_tree().create_timer(rng.randf_range(2.5,5))
 				self.phsr_timer.connect("timeout", self, "phsrJobDone")
 				self.phsr_job = true
 			else:
 				var j = rng.randi() % 10
 				if (j < 2): # 20% burst
-					phsr_burst = (rng.randi() % 6) + 5 # 5-10 bursts
+					phsr_burst = (rng.randi() % 6) + 2 # 2-7 bursts
 				else:
 					$mmonitor/pcg/phsr.eusage = 0
 					$mmonitor/pcg/phsr.musage = 0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/tng_torpedo_clean.mp3-a3534380bd46d5843c085773cb902df1.mp3str"
+
+[deps]
+
+source_file="res://Sounds/original/tng_torpedo_clean.mp3"
+dest_files=[ "res://.import/tng_torpedo_clean.mp3-a3534380bd46d5843c085773cb902df1.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
