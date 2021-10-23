@@ -4,12 +4,16 @@ var game : PackedScene = preload("res://main.tscn")
 var game_node = null
 
 func _ready():
-	$startmenu/play_game.connect("button_up", self, "start_game_without_tutorial")
-	$startmenu/play_tutorial.connect("button_up", self, "start_game_with_tutorial")
-	$startmenu/exit.connect("button_up", self, "quit_game")
+	$startmenu/play_game.connect("pressed", self, "start_game_without_tutorial")
+	$startmenu/play_tutorial.connect("pressed", self, "start_game_with_tutorial")
+	$startmenu/exit.connect("pressed", self, "quit_game")
+	$startmenu/CheckBox.connect("toggled", self, "toggle_play_game_button")
 	
-	$endmenu/mainmenu.connect("button_up", self, "return_to_mainmenu")
-	$endmenu/retry.connect("button_up", self, "retry")
+	$endmenu/mainmenu.connect("pressed", self, "return_to_mainmenu")
+	$endmenu/retry.connect("pressed", self, "retry")
+
+func toggle_play_game_button(active: bool):
+	$startmenu/play_game.disabled = !active
 
 func quit_game():
 	get_tree().quit()
@@ -30,6 +34,8 @@ func return_to_mainmenu():
 	$startmenu.visible = true
 
 func start_game(tutorial: bool):
+	$startmenu/CheckBox.pressed = true
+	
 	if game_node != null:
 		game_node.queue_free() # Question: does this also disconnect the signals? prob
 		game_node = null

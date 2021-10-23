@@ -1,8 +1,29 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://game.gd" type="Script" id=1]
 [ext_resource path="res://white_pixel.png.png" type="Texture" id=2]
-[ext_resource path="res://Fonts/beef'd custom.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Fonts/beef'd custom 5.tres" type="DynamicFont" id=3]
+[ext_resource path="res://MenuButton.tscn" type="PackedScene" id=6]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 15.0
+height = 167.0
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 15.0
+height = 239.0
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 15.0
+height = 83.0
+
+[sub_resource type="CapsuleShape2D" id=4]
+radius = 15.0
+height = 101.0
+
+[sub_resource type="CapsuleShape2D" id=5]
+radius = 15.0
+height = 83.0
 
 [node name="game" type="Node2D"]
 script = ExtResource( 1 )
@@ -10,6 +31,7 @@ script = ExtResource( 1 )
 [node name="Node" type="Node" parent="."]
 
 [node name="startmenu" type="Control" parent="."]
+pause_mode = 2
 margin_right = 40.0
 margin_bottom = 40.0
 __meta__ = {
@@ -22,40 +44,78 @@ position = Vector2( 209, 120 )
 scale = Vector2( 428.802, 277.363 )
 texture = ExtResource( 2 )
 
-[node name="play_game" type="Button" parent="startmenu"]
-margin_left = 113.0
-margin_top = 46.0
-margin_right = 250.0
-margin_bottom = 68.0
-custom_fonts/font = ExtResource( 3 )
+[node name="play_game" parent="startmenu" instance=ExtResource( 6 )]
+modulate = Color( 0.392157, 0.392157, 0.392157, 1 )
+position = Vector2( 5, 49 )
+bar_length = 156
 text = "PLAY GAME"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+base_color = Color( 0.356863, 0.431373, 0.882353, 1 )
+highlight_color = Color( 0.133333, 0.12549, 0.203922, 1 )
+disabled = true
 
-[node name="play_tutorial" type="Button" parent="startmenu"]
-margin_left = 113.0
-margin_top = 98.0
-margin_right = 306.0
-margin_bottom = 120.0
-custom_fonts/font = ExtResource( 3 )
+[node name="bar" parent="startmenu/play_game" index="1"]
+region_rect = Rect2( 0, 0, 156, 29 )
+
+[node name="circle_29_" parent="startmenu/play_game/bar" index="0"]
+position = Vector2( 156, 0 )
+
+[node name="Label" parent="startmenu/play_game/bar" index="1"]
+text = "PLAY GAME"
+
+[node name="Area2D" parent="startmenu/play_game" index="2"]
+position = Vector2( 97.5, 14.5 )
+
+[node name="CollisionShape2D" parent="startmenu/play_game/Area2D" index="0"]
+shape = SubResource( 1 )
+
+[node name="play_tutorial" parent="startmenu" instance=ExtResource( 6 )]
+position = Vector2( 5, 101 )
+bar_length = 228
 text = "PLAY TUTORIAL"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+base_color = Color( 0.356863, 0.431373, 0.882353, 1 )
+highlight_color = Color( 0.133333, 0.12549, 0.203922, 1 )
 
-[node name="exit" type="Button" parent="startmenu"]
-margin_left = 114.0
-margin_top = 149.0
-margin_right = 225.0
-margin_bottom = 171.0
-custom_fonts/font = ExtResource( 3 )
+[node name="bar" parent="startmenu/play_tutorial" index="1"]
+region_rect = Rect2( 0, 0, 228, 29 )
+
+[node name="circle_29_" parent="startmenu/play_tutorial/bar" index="0"]
+position = Vector2( 228, 0 )
+
+[node name="Label" parent="startmenu/play_tutorial/bar" index="1"]
+text = "PLAY TUTORIAL"
+
+[node name="Area2D" parent="startmenu/play_tutorial" index="2"]
+position = Vector2( 133.5, 14.5 )
+
+[node name="CollisionShape2D" parent="startmenu/play_tutorial/Area2D" index="0"]
+shape = SubResource( 3 )
+
+[node name="exit" parent="startmenu" instance=ExtResource( 6 )]
+modulate = Color( 0.85098, 0.341176, 0.388235, 1 )
+position = Vector2( 5, 191 )
 text = "EXIT"
+base_color = Color( 0.85098, 0.341176, 0.388235, 1 )
+highlight_color = Color( 0.419608, 0.113725, 0.113725, 1 )
+
+[node name="Label" parent="startmenu/exit/bar" index="1"]
+text = "EXIT"
+
+[node name="CollisionShape2D" parent="startmenu/exit/Area2D" index="0"]
+shape = SubResource( 2 )
+
+[node name="CheckBox" type="CheckBox" parent="startmenu"]
+margin_left = 235.0
+margin_top = 50.0
+margin_right = 360.0
+margin_bottom = 74.0
+custom_fonts/font = ExtResource( 3 )
+text = "I KNOW HOW TO PLAY"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="endmenu" type="Node2D" parent="."]
+pause_mode = 2
 visible = false
 
 [node name="white_pixelpng" type="Sprite" parent="endmenu"]
@@ -64,27 +124,35 @@ position = Vector2( 209, 120 )
 scale = Vector2( 260, 160 )
 texture = ExtResource( 2 )
 
-[node name="retry" type="Button" parent="endmenu"]
-margin_left = 253.0
-margin_top = 160.0
-margin_right = 302.0
-margin_bottom = 180.0
-custom_fonts/font = ExtResource( 3 )
+[node name="retry" parent="endmenu" instance=ExtResource( 6 )]
+position = Vector2( 205, 166 )
+bar_length = 90
 text = "RETRY"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="mainmenu" type="Button" parent="endmenu"]
-margin_left = 90.0
-margin_top = 161.0
-margin_right = 177.0
-margin_bottom = 181.0
-custom_fonts/font = ExtResource( 3 )
-text = "MAINMENU"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="bar" parent="endmenu/retry" index="1"]
+region_rect = Rect2( 0, 0, 90, 29 )
+
+[node name="circle_29_" parent="endmenu/retry/bar" index="0"]
+position = Vector2( 90, 0 )
+
+[node name="Label" parent="endmenu/retry/bar" index="1"]
+text = "RETRY"
+
+[node name="Area2D" parent="endmenu/retry" index="2"]
+position = Vector2( 64.5, 14.5 )
+
+[node name="CollisionShape2D" parent="endmenu/retry/Area2D" index="0"]
+shape = SubResource( 4 )
+
+[node name="mainmenu" parent="endmenu" instance=ExtResource( 6 )]
+position = Vector2( 84, 166 )
+text = "MENU"
+
+[node name="Label" parent="endmenu/mainmenu/bar" index="1"]
+text = "MENU"
+
+[node name="CollisionShape2D" parent="endmenu/mainmenu/Area2D" index="0"]
+shape = SubResource( 5 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="endmenu"]
 margin_left = 114.0
@@ -97,9 +165,9 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="endmenu/HBoxContainer"]
-margin_left = 15.0
+margin_left = 25.0
 margin_top = 16.0
-margin_right = 81.0
+margin_right = 82.0
 margin_bottom = 24.0
 custom_fonts/font = ExtResource( 3 )
 text = "HIGHSCORE:"
@@ -108,9 +176,9 @@ __meta__ = {
 }
 
 [node name="time" type="Label" parent="endmenu/HBoxContainer"]
-margin_left = 85.0
+margin_left = 86.0
 margin_top = 16.0
-margin_right = 120.0
+margin_right = 117.0
 margin_bottom = 24.0
 custom_fonts/font = ExtResource( 3 )
 text = "#Time"
@@ -119,12 +187,18 @@ __meta__ = {
 }
 
 [node name="Label2" type="Label" parent="endmenu/HBoxContainer"]
-margin_left = 124.0
+margin_left = 121.0
 margin_top = 16.0
-margin_right = 173.0
+margin_right = 164.0
 margin_bottom = 24.0
 custom_fonts/font = ExtResource( 3 )
 text = "SECONDS"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[editable path="startmenu/play_game"]
+[editable path="startmenu/play_tutorial"]
+[editable path="startmenu/exit"]
+[editable path="endmenu/retry"]
+[editable path="endmenu/mainmenu"]
