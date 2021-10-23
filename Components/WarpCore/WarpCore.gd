@@ -6,7 +6,7 @@ const DISPLAY_HIGHT = 14
 export(bool) var on: bool = true
 export(float) var matStoreSize: float
 export(float) var matStoreFullDamageTime: float
-var timer: float 
+onready var timer: float = matStoreFullDamageTime
 
 ## device
 var devices = []
@@ -83,7 +83,7 @@ func  _process(delta):
 		
 		# mat store damage
 		if (self.timer <= 0):
-			health -= 0.1 # damage
+			self.health -= 0.1 # damage
 			self.timer = self.matStoreFullDamageTime
 		
 		if (matStore > matStoreSize):

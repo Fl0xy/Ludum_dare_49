@@ -1,0 +1,127 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Fonts/Beef'd custom.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Sprites/ui_dial_seg_6.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/ui_dial_seg_8.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/ui_dial_seg_11.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/ui_dial_seg_5.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/ui_dial_seg_2.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/ui_dial_seg_7.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/ui_dial_seg_4.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/ui_dial_seg_9.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/ui_dial_seg_1.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/ui_dial_border.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/ui_dial_seg_3.png" type="Texture" id=14]
+[ext_resource path="res://Sprites/ui_dial_number-circle.png" type="Texture" id=15]
+[ext_resource path="res://Sprites/ui_dial_seg_10.png" type="Texture" id=16]
+
+[sub_resource type="DynamicFont" id=3]
+size = 5
+extra_spacing_char = -1
+font_data = ExtResource( 3 )
+
+[node name="dialcontrolmask" type="Node2D"]
+modulate = Color( 0.133333, 0.12549, 0.203922, 1 )
+
+[node name="ui_dial_border" type="Sprite" parent="."]
+texture = ExtResource( 13 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ui_dial_number_circle" type="Sprite" parent="."]
+texture = ExtResource( 15 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ui_dial_seg_1" type="Sprite" parent="."]
+texture = ExtResource( 12 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ui_dial_seg_2" type="Sprite" parent="."]
+texture = ExtResource( 8 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ui_dial_seg_3" type="Sprite" parent="."]
+texture = ExtResource( 14 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ui_dial_seg_4" type="Sprite" parent="."]
+texture = ExtResource( 10 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ui_dial_seg_5" type="Sprite" parent="."]
+texture = ExtResource( 7 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ui_dial_seg_6" type="Sprite" parent="."]
+texture = ExtResource( 4 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ui_dial_seg_7" type="Sprite" parent="."]
+texture = ExtResource( 9 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ui_dial_seg_8" type="Sprite" parent="."]
+texture = ExtResource( 5 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ui_dial_seg_9" type="Sprite" parent="."]
+texture = ExtResource( 11 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ui_dial_seg_10" type="Sprite" parent="."]
+texture = ExtResource( 16 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ui_dial_seg_11" type="Sprite" parent="."]
+texture = ExtResource( 6 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Label" type="Label" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 4.75
+margin_top = 48.75
+margin_right = 44.75
+margin_bottom = 62.75
+custom_fonts/font = SubResource( 3 )
+text = "DIAL"
+__meta__ = {
+"_edit_use_anchors_": false
+}
