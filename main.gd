@@ -80,11 +80,22 @@ export var screen_shake_duration = 1.0
 var remaining_screen_shake_time = 0
 var shake_strength
 
+
+
+
+var warpcore_accelleration = 160
+var warpcore_speed = 0
+func move_warpcore(delta):
+	$warpCore.position.y += 0.5*warpcore_accelleration*delta*delta + warpcore_speed*delta
+	warpcore_speed += warpcore_accelleration*delta
+
+
 func start_core_ejection():
 	emit_signal("game_over", play_time, true)
 	
 	core_ejected = true
 	$warpCore/AnimationPlayer_Ejector.play("EjectCore")
+	$warpCore/extension.visible = true
 	
 	# turn off all devices
 	set_all_devices(false)
@@ -147,6 +158,10 @@ func _process(delta):
 	else:
 		position.x = 0
 		position.y = 0
+	
+	
+	if core_ejected:
+		move_warpcore(delta)
 
 func _physics_process(delta):
 	play_time += delta # accumulates the time how long the player survived
