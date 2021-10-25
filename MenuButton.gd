@@ -58,7 +58,7 @@ func press():
 		return
 	emit_signal("pressed")
 	dehighlight()
-	print("pressed")#debug
+	# print("pressed")#debug
 
 func highlight():
 	modulate = highlight_color

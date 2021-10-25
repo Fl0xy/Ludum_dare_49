@@ -1,7 +1,6 @@
 extends Node2D
 
-signal core_ejected(play_time)
-signal core_exploded(play_time)
+signal game_over(playtime, core_ejected) # playtime: float, core_ejected: bool
 
 var play_time: float = 0.0
 
@@ -30,6 +29,7 @@ var rng = RandomNumberGenerator.new()
 
 export var time_for_completing_core_ejection: float = 0.0
 var core_ejected: bool = false
+var core_exploded: bool = false
 
 
 func _ready():
@@ -80,28 +80,41 @@ export var screen_shake_duration = 1.0
 var remaining_screen_shake_time = 0
 var shake_strength
 
+
+
+
+var warpcore_accelleration = 160
+var warpcore_speed = 0
+func move_warpcore(delta):
+	$warpCore.position.y += 0.5*warpcore_accelleration*delta*delta + warpcore_speed*delta
+	warpcore_speed += warpcore_accelleration*delta
+
+
 func start_core_ejection():
-	emit_signal("core_ejected", play_time)
+	emit_signal("game_over", play_time, true)
 	
 	core_ejected = true
 	$warpCore/AnimationPlayer_Ejector.play("EjectCore")
+	$warpCore/extension.visible = true
 	
 	# turn off all devices
-	$mmonitor/pcg/phsr.visible = false
-	$mmonitor/pcg/shld.visible = false
-	$mmonitor/pcg/torp.visible = false
-	$mmonitor/pcg/holo.visible = false
-	$mmonitor/pcg/snsr.visible = false
-	$mmonitor/pcg/tnsp.visible = false
-	$mmonitor/pcg/warp.visible = false
-	$mmonitor/pcg/impl.visible = false
-	$mmonitor/pcg/dflc.visible = false
-	
+	set_all_devices(false)
 	# turn off mac controller / ui
 	$mmonitor/mac/antiMatterControl.visible = false
 	$mmonitor/mac/matterControl.visible = false
 	$mmonitor/mac/powChart/bar.visible = false
 	$mmonitor/mac/mamChart/bar.visible = false
+
+func set_all_devices(b: bool):
+	$mmonitor/pcg/phsr.visible = b
+	$mmonitor/pcg/shld.visible = b
+	$mmonitor/pcg/torp.visible = b
+	$mmonitor/pcg/holo.visible = b
+	$mmonitor/pcg/snsr.visible = b
+	$mmonitor/pcg/tnsp.visible = b
+	$mmonitor/pcg/warp.visible = b
+	$mmonitor/pcg/impl.visible = b
+	$mmonitor/pcg/dflc.visible = b
 
 func shake_screen():
 	remaining_screen_shake_time = screen_shake_duration
@@ -116,6 +129,13 @@ func testForAndInitateCoreEjectionProcedureIfNeeded(coreHealth):
 		get_tree().create_timer(time_for_completing_core_ejection).connect("timeout", self, "handleCoreEjectionTimeout")
 
 
+var Explosion = preload("res://Explosion.tscn")
+func explode_core():
+	core_exploded = true
+	set_all_devices(false)
+	add_child(Explosion.instance())
+	emit_signal("game_over", play_time, false); print("core exploded")
+
 func handleCoreEjectionTimeout():
 	# TODO:
 	# start timer for core explosion : gameover
@@ -123,8 +143,8 @@ func handleCoreEjectionTimeout():
 	# make the reactor flash red
 	
 	if !core_ejected:
-		print("core exploded")
-		emit_signal("core_exploded", play_time)
+		if !core_exploded: # TODO: not thread safe, dunno how exactly godot manages signals
+			explode_core()
 	else:
 		print("core exploded safely outside the ship")
 
@@ -138,6 +158,10 @@ func _process(delta):
 	else:
 		position.x = 0
 		position.y = 0
+	
+	
+	if core_ejected:
+		move_warpcore(delta)
 
 func _physics_process(delta):
 	play_time += delta # accumulates the time how long the player survived

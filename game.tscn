@@ -9,11 +9,11 @@
 radius = 15.0
 height = 167.0
 
-[sub_resource type="CapsuleShape2D" id=3]
+[sub_resource type="CapsuleShape2D" id=2]
 radius = 15.0
 height = 239.0
 
-[sub_resource type="CapsuleShape2D" id=2]
+[sub_resource type="CapsuleShape2D" id=3]
 radius = 15.0
 height = 83.0
 
@@ -45,7 +45,7 @@ scale = Vector2( 428.802, 277.363 )
 texture = ExtResource( 2 )
 
 [node name="play_game" parent="startmenu" instance=ExtResource( 6 )]
-modulate = Color( 0.392157, 0.392157, 0.392157, 1 )
+modulate = Color( 0.133333, 0.12549, 0.203922, 1 )
 position = Vector2( 5, 49 )
 bar_length = 156
 text = "PLAY GAME"
@@ -69,6 +69,7 @@ position = Vector2( 97.5, 14.5 )
 shape = SubResource( 1 )
 
 [node name="play_tutorial" parent="startmenu" instance=ExtResource( 6 )]
+modulate = Color( 0.356863, 0.431373, 0.882353, 1 )
 position = Vector2( 5, 101 )
 bar_length = 228
 text = "PLAY TUTORIAL"
@@ -88,7 +89,7 @@ text = "PLAY TUTORIAL"
 position = Vector2( 133.5, 14.5 )
 
 [node name="CollisionShape2D" parent="startmenu/play_tutorial/Area2D" index="0"]
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 
 [node name="exit" parent="startmenu" instance=ExtResource( 6 )]
 modulate = Color( 0.85098, 0.341176, 0.388235, 1 )
@@ -101,7 +102,7 @@ highlight_color = Color( 0.419608, 0.113725, 0.113725, 1 )
 text = "EXIT"
 
 [node name="CollisionShape2D" parent="startmenu/exit/Area2D" index="0"]
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="CheckBox" type="CheckBox" parent="startmenu"]
 margin_left = 235.0
@@ -125,9 +126,12 @@ scale = Vector2( 260, 160 )
 texture = ExtResource( 2 )
 
 [node name="retry" parent="endmenu" instance=ExtResource( 6 )]
+modulate = Color( 0.6, 0.898039, 0.313726, 1 )
 position = Vector2( 205, 166 )
 bar_length = 90
 text = "RETRY"
+base_color = Color( 0.6, 0.898039, 0.313726, 1 )
+highlight_color = Color( 0.294118, 0.411765, 0.184314, 1 )
 
 [node name="bar" parent="endmenu/retry" index="1"]
 region_rect = Rect2( 0, 0, 90, 29 )
@@ -145,8 +149,11 @@ position = Vector2( 64.5, 14.5 )
 shape = SubResource( 4 )
 
 [node name="mainmenu" parent="endmenu" instance=ExtResource( 6 )]
+modulate = Color( 0.984314, 0.94902, 0.211765, 1 )
 position = Vector2( 84, 166 )
 text = "MENU"
+base_color = Color( 0.984314, 0.94902, 0.211765, 1 )
+highlight_color = Color( 0.654902, 0.627451, 0.00784314, 1 )
 
 [node name="Label" parent="endmenu/mainmenu/bar" index="1"]
 text = "MENU"
