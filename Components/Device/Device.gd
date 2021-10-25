@@ -17,11 +17,12 @@ export(bool) var connected: bool = false setget changeConnected
 export(Resource) var powerStartSound: Resource setget setPowerStartSound
 export(Resource) var powerSustainSound: Resource setget setPowerSustainSound
 export(Resource) var powerEndSound: Resource setget setPowerEndSound
+export(Resource) var powerStartMisfireSound: Resource setget setPowerStartMisfireSound
+export(Resource) var powerSustainMisfireSound: Resource setget setPowerSustainMisfireSound
 
 var timer: float setget changeTimer
 var ebuf: float setget changeEbuf
 var mbuf: float setget changeMbuf
-
 
 signal deviceConnect(device)
 signal deviceDisconnect(device)
@@ -31,6 +32,7 @@ func _ready():
 	$Area2D.connect("input_event", self, "area2DClickedHelper")
 	timer = timeToDead
 	$soundPowerStart.connect("finished", self, "startSoundFinished")
+	$soundPowerSustain.connect("finished", self, "sustainSoundFinished")
 	
 	self.ebuf = self.ebufSize / 2
 	if (self.mbufSize != 0):
@@ -58,7 +60,7 @@ func _physics_process(delta):
 		self.ebuf -= self.eusage
 		
 	## check energie buffer full or empty
-	if (self.ebuf >= self.ebufSize || self.ebuf <= 0):
+	if ((self.ebuf >= self.ebufSize && self.inEnergie > 0) || self.ebuf <= 0):
 		damage = true
 	
 	if (mbufSize > 0): #matter mode
@@ -66,14 +68,14 @@ func _physics_process(delta):
 			self.mbuf += self.inMatter
 		if (self.mbuf > 0):
 			self.mbuf -= self.musage
-		if (self.mbuf >= self.mbufSize || self.mbuf <= 0):
+		if ((self.mbuf >= self.mbufSize && abs(self.inMatter) > 0)|| self.mbuf <= 0):
 			damage = true
 	elif (mbufSize < 0): #antimatter mode
 		if (self.mbuf > self.mbufSize * 1.01):
 			self.mbuf += self.inMatter
 		if (self.mbuf < 0):
 			self.mbuf -= self.musage
-		if (self.mbuf <= self.mbufSize || self.mbuf >= 0):
+		if ((self.mbuf <= self.mbufSize && abs(self.inMatter) > 0) || self.mbuf >= 0):
 			damage = true
 	
 	# Damage
@@ -85,6 +87,7 @@ func _physics_process(delta):
 	if (self.timer < 0):
 		emit_signal("feedbackloop")
 		self.timer = timeToDead
+		
 		
 
 
@@ -112,16 +115,23 @@ func changeEbuf(newEbuf: float):
 	$ebar.value = ebuf
 	
 func changeMbuf(newMbuf: float):
-	mbuf = newMbuf
+	if (self.mbufSize < 0 && newMbuf > 0) || (self.mbufSize > 0 && newMbuf < 0):
+		mbuf = 0
+	else:
+		mbuf = newMbuf
 	$mbar.value = abs(mbuf)
 	
 func changeEUsage(newEUsage: float):
 	# sound
-	if (eusage == 0 && newEUsage > 0):
-		$soundPowerStart.play(0)
+	if (eusage == 0 && newEUsage > 0): # start audio
+		if (self.ebuf > 0 && (abs(self.mbuf) > 0 || self.mbufSize == 0)): # energy availabe -> play normal sound
+			$soundPowerStart.play(0)
+		else: # energy or matter empty -> play misfire sound
+			$soundPowerStartMissfire.play(0)
 	elif(eusage > 0 && newEUsage == 0):
-		$soundPowerSustain.stop()
-		$soundPowerEnd.play(0)
+		if (!$soundPowerSustainMissfire.playing && $soundPowerSustain.playing):
+			$soundPowerSustain.stop()
+			$soundPowerEnd.play(0)
 	# values
 	eusage = newEUsage
 	if (eusage != 0):
@@ -195,6 +205,23 @@ func setPowerEndSound(newPowerEndSound):
 	powerEndSound = newPowerEndSound
 	$soundPowerEnd.stream = powerEndSound
 	
+func setPowerStartMisfireSound(newPowerStartMisfireSound):
+	powerStartMisfireSound = newPowerStartMisfireSound
+	$soundPowerStartMissfire.stream = powerStartMisfireSound
+	
+func setPowerSustainMisfireSound(newPowerSustainMisfireSound):
+	powerSustainMisfireSound = newPowerSustainMisfireSound
+	$soundPowerSustainMissfire.stream = powerSustainMisfireSound
+	
 func startSoundFinished():
 	if (self.eusage > 0):
 		$soundPowerSustain.play(0)
+		
+func sustainSoundFinished():
+	if (self.eusage > 0):
+		if (self.ebuf > 0 && (abs(self.mbuf) > 0 || self.mbufSize == 0)): # energy availabe -> play normal sound
+			$soundPowerSustain.play(0)
+		else: # energy or matter empty -> play misfire sound
+			$soundPowerSustainMissfire.play(0)
+		
+	

@@ -56,3 +56,7 @@ polygon = PoolVector2Array( 2.64891, 6.29017, 2.64891, 25.1677, 8.66611, 31.3618
 [node name="soundPowerSustain" type="AudioStreamPlayer" parent="."]
 
 [node name="soundPowerEnd" type="AudioStreamPlayer" parent="."]
+
+[node name="soundPowerStartMissfire" type="AudioStreamPlayer" parent="."]
+
+[node name="soundPowerSustainMissfire" type="AudioStreamPlayer" parent="."]

@@ -11,5 +11,5 @@ dest_files=[ "res://.import/phaser_sustain.ogg-64f5810a473e234c3b50e9143249b444.
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

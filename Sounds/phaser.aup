@@ -1,77 +1,51 @@
 <?xml version="1.0" standalone="no" ?>
 <!DOCTYPE project PUBLIC "-//audacityproject-1.3.0//DTD//EN" "http://audacity.sourceforge.net/xml/audacityproject-1.3.0.dtd" >
-<project xmlns="http://audacity.sourceforge.net/xml/" projname="phaser_data" version="1.3.0" audacityversion="2.4.1" sel0="0.0000000000" sel1="0.8891458333" vpos="0" h="0.0000000000" zoom="455.5041152263" rate="48000.0" snapto="off" selectionformat="hh:mm:ss + milliseconds" frequencyformat="Hz" bandwidthformat="octaves">
+<project xmlns="http://audacity.sourceforge.net/xml/" projname="phaser_data" version="1.3.0" audacityversion="2.4.1" sel0="2.0504791633" sel1="2.8236458300" vpos="288" h="0.7501251053" zoom="959.8398919815" rate="48000.0" snapto="off" selectionformat="hh:mm:ss + milliseconds" frequencyformat="Hz" bandwidthformat="octaves">
 	<tags>
 		<tag name="Software" value="Lavf52.93.0"/>
 	</tags>
-	<wavetrack name="tng_phaser4_clean_top" isSelected="1" height="122" minimized="0" channel="0" linked="1" mute="0" solo="0" rate="48000" gain="1.0" pan="0.0" colorindex="0">
+	<wavetrack name="Mix" isSelected="0" height="150" minimized="0" channel="0" linked="1" mute="1" solo="0" rate="48000" gain="1.0" pan="0.0" colorindex="0">
 		<waveclip offset="0.00000000" colorindex="0">
-			<sequence maxsamples="262144" sampleformat="262159" numsamples="42679">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="67336">
 				<waveblock start="0">
-					<simpleblockfile filename="eff1f492.au" len="42679" min="-1.006029" max="1.004212" rms="0.204332"/>
+					<simpleblockfile filename="eff1f0c7.au" len="67336" min="-1.006029" max="1.004212" rms="0.242819"/>
 				</waveblock>
 			</sequence>
-			<envelope numpoints="2">
-				<controlpoint t="0.006586109543" val="0.225352108479"/>
-				<controlpoint t="0.153675889328" val="1.000000000000"/>
-			</envelope>
+			<envelope numpoints="0"/>
 		</waveclip>
 	</wavetrack>
-	<wavetrack name="tng_phaser4_clean_top" isSelected="1" height="122" minimized="0" channel="1" linked="0" mute="0" solo="0" rate="48000" gain="1.0" pan="0.0" colorindex="0">
+	<wavetrack name="Mix" isSelected="0" height="150" minimized="0" channel="1" linked="0" mute="1" solo="0" rate="48000" gain="1.0" pan="0.0" colorindex="0">
 		<waveclip offset="0.00000000" colorindex="0">
-			<sequence maxsamples="262144" sampleformat="262159" numsamples="42679">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="67336">
 				<waveblock start="0">
-					<simpleblockfile filename="eff1f3bd.au" len="42679" min="-1.006029" max="1.004212" rms="0.204332"/>
-				</waveblock>
-			</sequence>
-			<envelope numpoints="2">
-				<controlpoint t="0.006586109543" val="0.225352108479"/>
-				<controlpoint t="0.153675889328" val="1.000000000000"/>
-			</envelope>
-		</waveclip>
-	</wavetrack>
-	<wavetrack name="tng_phaser4_clean_top" isSelected="1" height="100" minimized="0" channel="0" linked="1" mute="0" solo="0" rate="48000" gain="1.0" pan="0.0" colorindex="0">
-		<waveclip offset="0.71129167" colorindex="0">
-			<sequence maxsamples="262144" sampleformat="262159" numsamples="33194">
-				<waveblock start="0">
-					<simpleblockfile filename="eff1f9ff.au" len="33194" min="-0.999998" max="0.982952" rms="0.25777"/>
+					<simpleblockfile filename="eff1f364.au" len="67336" min="-1.006029" max="1.004212" rms="0.242819"/>
 				</waveblock>
 			</sequence>
 			<envelope numpoints="0"/>
 		</waveclip>
 	</wavetrack>
-	<wavetrack name="tng_phaser4_clean_top" isSelected="1" height="100" minimized="0" channel="1" linked="0" mute="0" solo="0" rate="48000" gain="1.0" pan="0.0" colorindex="0">
-		<waveclip offset="0.71129167" colorindex="0">
-			<sequence maxsamples="262144" sampleformat="262159" numsamples="33194">
-				<waveblock start="0">
-					<simpleblockfile filename="eff1f0bc.au" len="33194" min="-0.999998" max="0.982952" rms="0.25777"/>
-				</waveblock>
-			</sequence>
-			<envelope numpoints="0"/>
-		</waveclip>
-	</wavetrack>
-	<wavetrack name="tng_phaser4_clean_top" isSelected="0" height="112" minimized="0" channel="0" linked="1" mute="0" solo="0" rate="48000" gain="1.0" pan="0.0" colorindex="0">
-		<waveclip offset="1.69483333" colorindex="0">
-			<sequence maxsamples="262144" sampleformat="262159" numsamples="17071">
-				<waveblock start="0">
-					<simpleblockfile filename="eff1fb52.au" len="17071" min="-0.887787" max="1.000536" rms="0.250361"/>
-				</waveblock>
-			</sequence>
-			<envelope numpoints="0"/>
-		</waveclip>
-	</wavetrack>
-	<wavetrack name="tng_phaser4_clean_top" isSelected="0" height="112" minimized="0" channel="1" linked="0" mute="0" solo="0" rate="48000" gain="1.0" pan="0.0" colorindex="0">
-		<waveclip offset="1.69483333" colorindex="0">
-			<sequence maxsamples="262144" sampleformat="262159" numsamples="17071">
-				<waveblock start="0">
-					<simpleblockfile filename="eff1fdb6.au" len="17071" min="-0.887787" max="1.000536" rms="0.250361"/>
-				</waveblock>
-			</sequence>
-			<envelope numpoints="0"/>
-		</waveclip>
-	</wavetrack>
-	<wavetrack name="tng_phaser4_clean_top" isSelected="0" height="100" minimized="0" channel="0" linked="1" mute="0" solo="0" rate="48000" gain="1.0" pan="0.0" colorindex="0">
+	<wavetrack name="Mix" isSelected="0" height="150" minimized="0" channel="0" linked="1" mute="1" solo="0" rate="48000" gain="1.0" pan="0.0" colorindex="0">
 		<waveclip offset="1.40283333" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="31087">
+				<waveblock start="0">
+					<simpleblockfile filename="eff1f2d8.au" len="31087" min="-1.008113" max="1.013158" rms="0.279051"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Mix" isSelected="0" height="150" minimized="0" channel="1" linked="0" mute="1" solo="0" rate="48000" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="1.40283333" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="31087">
+				<waveblock start="0">
+					<simpleblockfile filename="eff1f7f8.au" len="31087" min="-1.008113" max="1.013158" rms="0.279051"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="tng_phaser4_clean_top" isSelected="0" height="96" minimized="0" channel="0" linked="1" mute="1" solo="0" rate="48000" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="2.05047917" colorindex="0">
 			<sequence maxsamples="262144" sampleformat="262159" numsamples="21497">
 				<waveblock start="0">
 					<simpleblockfile filename="eff1f55b.au" len="21497" min="-1.008113" max="1.001321" rms="0.249271"/>
@@ -82,8 +56,8 @@
 			</envelope>
 		</waveclip>
 	</wavetrack>
-	<wavetrack name="tng_phaser4_clean_top" isSelected="0" height="100" minimized="0" channel="1" linked="0" mute="0" solo="0" rate="48000" gain="1.0" pan="0.0" colorindex="0">
-		<waveclip offset="1.40283333" colorindex="0">
+	<wavetrack name="tng_phaser4_clean_top" isSelected="0" height="96" minimized="0" channel="1" linked="0" mute="1" solo="0" rate="48000" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="2.05047917" colorindex="0">
 			<sequence maxsamples="262144" sampleformat="262159" numsamples="21497">
 				<waveblock start="0">
 					<simpleblockfile filename="eff1ff94.au" len="21497" min="-1.008113" max="1.001321" rms="0.249271"/>
@@ -94,30 +68,44 @@
 			</envelope>
 		</waveclip>
 	</wavetrack>
-	<wavetrack name="tng_phaser4_clean_top" isSelected="0" height="96" minimized="0" channel="0" linked="1" mute="0" solo="0" rate="48000" gain="1.0" pan="0.0" colorindex="0">
-		<waveclip offset="2.05047917" colorindex="0">
-			<sequence maxsamples="262144" sampleformat="262159" numsamples="21497">
+	<wavetrack name="Mix" isSelected="0" height="150" minimized="0" channel="0" linked="1" mute="1" solo="0" rate="48000" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="49140">
 				<waveblock start="0">
-					<simpleblockfile filename="eff1f55b.au" len="21497" min="-1.008113" max="1.001321" rms="0.249271"/>
+					<simpleblockfile filename="eff1f7fe.au" len="49140" min="-1.020813" max="0.976439" rms="0.145112"/>
 				</waveblock>
 			</sequence>
-			<envelope numpoints="2">
-				<controlpoint t="0.000000000000" val="1.000000000000"/>
-				<controlpoint t="0.474196158009" val="0.098591566086"/>
-			</envelope>
+			<envelope numpoints="0"/>
 		</waveclip>
 	</wavetrack>
-	<wavetrack name="tng_phaser4_clean_top" isSelected="0" height="96" minimized="0" channel="1" linked="0" mute="0" solo="0" rate="48000" gain="1.0" pan="0.0" colorindex="0">
-		<waveclip offset="2.05047917" colorindex="0">
-			<sequence maxsamples="262144" sampleformat="262159" numsamples="21497">
+	<wavetrack name="Mix" isSelected="0" height="150" minimized="0" channel="1" linked="0" mute="1" solo="0" rate="48000" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="49140">
 				<waveblock start="0">
-					<simpleblockfile filename="eff1ff94.au" len="21497" min="-1.008113" max="1.001321" rms="0.249271"/>
+					<simpleblockfile filename="eff1f945.au" len="49140" min="-1.020813" max="0.976439" rms="0.145112"/>
 				</waveblock>
 			</sequence>
-			<envelope numpoints="2">
-				<controlpoint t="0.000000000000" val="1.000000000000"/>
-				<controlpoint t="0.474196158009" val="0.098591566086"/>
-			</envelope>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Mix" isSelected="1" height="150" minimized="0" channel="0" linked="1" mute="0" solo="1" rate="48000" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="2.05047916" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="37112">
+				<waveblock start="0">
+					<simpleblockfile filename="eff1f4c0.au" len="37112" min="-1.094729" max="1.218821" rms="0.183848"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Mix" isSelected="1" height="150" minimized="0" channel="1" linked="0" mute="0" solo="1" rate="48000" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="2.05047916" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="37112">
+				<waveblock start="0">
+					<simpleblockfile filename="eff1fee3.au" len="37112" min="-1.094729" max="1.218821" rms="0.183848"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
 		</waveclip>
 	</wavetrack>
 </project>
