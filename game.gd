@@ -42,11 +42,21 @@ func start_game(tutorial: bool):
 	
 	game_node = game.instance()
 	game_node.get_node("tutorial").enable = tutorial
-	game_node.connect("core_ejected", self, "show_core_ejected_endscreen")
-	game_node.connect("core_exploded", self, "show_core_exploded_endscreen")
+	game_node.connect("game_over", self, "show_endscreen")
+	#game_node.connect("core_ejected", self, "show_core_ejected_endscreen")
+	#game_node.connect("core_exploded", self, "show_core_exploded_endscreen")
 	add_child_below_node($Node, game_node)
 	$startmenu.visible = false
 
+
+func show_endscreen(playtime: float, core_ejected: bool):
+	if core_ejected:
+		print("show core ejected endscreen") #debug
+	else:
+		print("show core exploded endscreen") #debug
+	
+	$endmenu.visible = true
+	$endmenu/HBoxContainer/time.text = str(stepify(playtime, 0.01))
 
 func show_core_ejected_endscreen(play_time):
 	print("show core ejected endscreen") #debug
